@@ -7,97 +7,174 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-        content="موقع التقني الدومة - م. آدم عصام | منصة متخصصة في تطبيقات الأندرويد، ألعاب Unity، والشروحات البرمجية.">
-
+        content="موقع التقني الدومة - م. آدم عصام | منصة تطبيقات وألعاب وشروحات برمجية احترافية">
     <meta name="keywords"
-        content="Adam Tech, التقني الدومة, برمجة, ألعاب, تطبيقات, Unity, Flutter, تحميل تطبيق القرآن">
-
+        content="التقني الدومة, Flutter, Unity, تطبيق القرآن, برمجة, تطبيقات اندرويد">
     <meta name="author" content="آدم عصام الدين">
 
     <title>التقني الدومة | Adouma Technology</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
-        href="https://github.com/adamosam1997-afk/aldouma-tech/releases/download/v2026.0/app-release.apk">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- Main CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #ffffff;
+            background: #f7f7f7;
         }
 
-        /* قسم التطبيق */
-        .quran-section {
-            background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+        /* HEADER */
+        header {
+            background: #0f5132;
             color: white;
-            padding: 60px 20px;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header .logo {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #0f5132, #198754);
+            color: white;
             text-align: center;
-            border-radius: 30px;
-            margin: 40px 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 70px 20px;
         }
 
-        .quran-icon {
-            width: 130px;
-            height: 130px;
-            border-radius: 25px;
-            margin-bottom: 20px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            object-fit: cover;
+        .hero h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
         }
 
-        .quran-section h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        .quran-section p {
+        .hero p {
             max-width: 700px;
             margin: auto;
             line-height: 1.8;
-            font-size: 1.1rem;
         }
 
-        /* زر التحميل */
+        /* QURAN SECTION */
+        .quran-section {
+            background: white;
+            margin: 30px 15px;
+            padding: 40px 20px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .quran-icon {
+            width: 120px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+
         .btn-download {
-            background-color: #ffffff;
-            color: #1b5e20 !important;
-            padding: 16px 45px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            text-decoration: none;
             display: inline-block;
-            margin-top: 30px;
-            transition: 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+            padding: 14px 30px;
+            background: #198754;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
         }
 
         .btn-download:hover {
-            transform: translateY(-4px);
-            background-color: #f2f2f2;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: #146c43;
         }
 
-        .btn-download i {
-            margin-left: 10px;
+        /* CARDS */
+        .section {
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 22px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .card i {
+            font-size: 28px;
+            color: #198754;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #0f5132;
+            color: white;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0f5132;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        @media(max-width:768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Header -->
+    <!-- HEADER -->
     <header>
         <div class="logo">Adouma Tech</div>
-
         <nav>
             <ul>
-                <li><a href="index.html" class="active">الرئيسية</a></li>
+                <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="games.html">الألعاب</a></li>
                 <li><a href="apps.html">التطبيقات</a></li>
                 <li><a href="tutorials.html">الشروحات</a></li>
@@ -106,158 +183,68 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- HERO -->
     <section class="hero">
         <h1>مرحباً بك في منصة التقني الدومة 🚀</h1>
-
         <p>
-            بوابة المهندس <strong>آدم عصام الدين</strong> لتطوير البرمجيات
-            وتقديم أحدث التطبيقات والألعاب والشروحات التقنية
-            باستخدام Flutter و Unity.
+            منصة احترافية لتطوير التطبيقات والألعاب باستخدام Flutter و Unity
         </p>
     </section>
 
-    <!-- Quran App Section -->
+    <!-- QURAN APP -->
     <section class="quran-section">
 
-        <img src="assets/images/Bak.jpg"
-            alt="أيقونة تطبيق القرآن"
-            class="quran-icon">
+        <img src="assets/images/Bak.jpg" class="quran-icon">
 
-        <h2>تطبيق القرآن الكريم (إصدار 2026)</h2>
+        <h2>تطبيق القرآن الكريم (2026)</h2>
 
         <p>
-            نسخة احترافية متكاملة من المصحف الشريف بواجهة عصرية
-            وسهلة الاستخدام، تم تطويرها بواسطة التقني الدومة
-            لدعم المحتوى العربي والإسلامي بأفضل تجربة ممكنة.
+            نسخة احترافية لقراءة القرآن الكريم بواجهة حديثة وسهلة الاستخدام
         </p>
 
-        <!-- زر التحميل -->
-        <a href="https://github.com/adamosam1997-afk/aldouma-tech/releases/download/v2026.0/app-release.apk"
-            class="btn-download"
+        <a class="btn-download"
+            href="https://github.com/adamosam1997-afk/aldouma-tech/releases/download/v2026.0/app-release.apk"
             target="_blank">
 
             <i class="fa-brands fa-android"></i>
-            تحميل تطبيق القرآن الكريم APK
+            تحميل APK
 
         </a>
-
     </section>
 
-    <!-- الخدمات -->
+    <!-- SERVICES -->
     <section class="section">
 
-        <h2 class="section-title">استكشف خدماتنا</h2>
+        <h2 class="section-title">خدماتنا</h2>
 
         <div class="cards">
 
             <div class="card">
-                <div class="card-content">
-                    <h3>
-                        <i class="fa-solid fa-gamepad"></i>
-                        الألعاب
-                    </h3>
-
-                    <p>
-                        استمتع بألعاب حديثة تم تطويرها باستخدام Unity
-                        مع تصميم ورسوميات احترافية.
-                    </p>
-
-                    <a href="games.html" class="btn">
-                        دخول الألعاب
-                    </a>
-                </div>
+                <i class="fa-solid fa-gamepad"></i>
+                <h3>الألعاب</h3>
+                <a class="btn" href="games.html">دخول</a>
             </div>
 
             <div class="card">
-                <div class="card-content">
-                    <h3>
-                        <i class="fa-solid fa-mobile-screen-button"></i>
-                        التطبيقات
-                    </h3>
-
-                    <p>
-                        تطبيقات خدمية احترافية مطورة خصيصاً
-                        لمستخدمي الأندرويد.
-                    </p>
-
-                    <a href="apps.html" class="btn">
-                        دخول التطبيقات
-                    </a>
-                </div>
+                <i class="fa-solid fa-mobile"></i>
+                <h3>التطبيقات</h3>
+                <a class="btn" href="apps.html">دخول</a>
             </div>
 
             <div class="card">
-                <div class="card-content">
-                    <h3>
-                        <i class="fa-solid fa-code"></i>
-                        الشروحات
-                    </h3>
-
-                    <p>
-                        شروحات مبسطة في البرمجة وتطوير التطبيقات
-                        وقواعد البيانات.
-                    </p>
-
-                    <a href="tutorials.html" class="btn">
-                        دخول الشروحات
-                    </a>
-                </div>
+                <i class="fa-solid fa-code"></i>
+                <h3>الشروحات</h3>
+                <a class="btn" href="tutorials.html">دخول</a>
             </div>
 
         </div>
 
     </section>
 
-    <!-- التواصل -->
-    <section class="section" style="background-color:#f9f9f9;">
-
-        <h2 class="section-title">تواصل مع المطور</h2>
-
-        <div style="text-align:center; padding:20px;">
-
-            <p>
-                لديك فكرة مشروع أو استفسار تقني؟
-                يسعدنا التواصل معك.
-            </p>
-
-            <br>
-
-            <a href="contact.html"
-                class="btn"
-                style="background-color:#333;">
-
-                <i class="fa-solid fa-envelope"></i>
-                اذهب لصفحة التواصل
-
-            </a>
-
-        </div>
-
-    </section>
-
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer>
-
-        <div class="footer-content">
-
-            <p>
-                جميع الحقوق محفوظة ©
-                <strong>التقني الدومة - آدم عصام</strong>
-                2026
-            </p>
-
-            <div class="social-links">
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-github"></i>
-                <i class="fa-brands fa-whatsapp"></i>
-            </div>
-
-        </div>
-
+        <p>© 2026 التقني الدومة - جميع الحقوق محفوظة</p>
     </footer>
-
-    <script src="js/script.js"></script>
 
 </body>
 
