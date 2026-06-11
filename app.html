@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>التطبيقات - التقني الدومة | تطبيق القرآن الكريم</title>
-    <!-- Font Awesome 6 -->
+    <title>الألعاب - التقني الدومة | أمثال سودانية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -12,41 +11,32 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Segoe UI', 'Tahoma', 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #f5f7fc 0%, #e9eef5 100%);
-            color: #1e2a3e;
+            background: linear-gradient(135deg, #fdf8ec 0%, #f4e9d8 100%);
+            color: #3e2a1f;
             line-height: 1.5;
         }
-
-        /* Header */
         header {
-            background: #0b2b26;
+            background: #5d3a1a;
             padding: 1rem 2rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
         }
-
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            color: #f9c74f;
-            letter-spacing: 1px;
+            color: #ffd966;
             text-align: center;
         }
-
-        /* Navigation */
         nav {
-            background: #1e3a3a;
+            background: #7b4a2a;
             padding: 0.8rem;
             border-radius: 0 0 20px 20px;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-
         nav ul {
             display: flex;
             justify-content: center;
@@ -54,7 +44,6 @@
             list-style: none;
             gap: 1.2rem;
         }
-
         nav ul li a {
             color: #f1f1f1;
             text-decoration: none;
@@ -62,37 +51,28 @@
             padding: 0.5rem 1rem;
             border-radius: 40px;
             transition: all 0.3s ease;
-            font-size: 1rem;
         }
-
         nav ul li a:hover,
         nav ul li a.active {
-            background: #f9c74f;
-            color: #1e3a3a;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            background: #ffd966;
+            color: #5d3a1a;
         }
-
-        /* Section */
         .section {
             max-width: 1200px;
             margin: 0 auto;
             padding: 1rem 2rem 3rem;
         }
-
         .section-title {
             text-align: center;
             font-size: 2.2rem;
             margin-bottom: 2rem;
-            color: #0b2b26;
-            border-bottom: 3px solid #f9c74f;
+            color: #5d3a1a;
+            border-bottom: 3px solid #ffd966;
             display: inline-block;
-            padding-bottom: 0.5rem;
             width: auto;
             margin-left: auto;
             margin-right: auto;
         }
-
-        /* Cards container (centered) */
         .cards {
             display: flex;
             justify-content: center;
@@ -100,82 +80,60 @@
             flex-wrap: wrap;
             gap: 2rem;
         }
-
-        /* Single Card */
         .card {
             background: #ffffff;
             border-radius: 32px;
             overflow: hidden;
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
             max-width: 550px;
             width: 100%;
             text-align: center;
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(249, 199, 79, 0.3);
+            border: 1px solid #ffd966;
         }
-
         .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 30px 45px -12px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 30px 45px -12px rgba(0,0,0,0.3);
         }
-
-        /* Card image area */
         .card-img {
-            width: 100%;
-            background: linear-gradient(145deg, #0f3d3a, #082a26);
-            padding: 2rem 1rem 1rem;
+            background: linear-gradient(145deg, #f4d03f, #e6b800);
+            padding: 2rem;
         }
-
-        .quran-icon {
+        .game-icon {
             width: 130px;
             height: 130px;
             object-fit: contain;
             filter: drop-shadow(0 8px 12px rgba(0,0,0,0.2));
-            transition: transform 0.3s;
         }
-
-        .card:hover .quran-icon {
-            transform: scale(1.03);
-        }
-
-        /* Card content */
         .card-content {
-            padding: 1.8rem 1.8rem 2.2rem;
+            padding: 1.8rem;
         }
-
         .card-content h3 {
             font-size: 2rem;
-            color: #0b2b26;
+            color: #5d3a1a;
             margin-bottom: 0.75rem;
-            font-weight: 700;
         }
-
         .version-badge {
-            background: #e9ecef;
-            color: #2c3e2f;
+            background: #f4ecd8;
+            color: #7b4a2a;
             padding: 0.3rem 1rem;
             border-radius: 30px;
-            font-size: 0.85rem;
             display: inline-block;
             margin-bottom: 1.2rem;
-            font-weight: 600;
+            font-weight: bold;
         }
-
         .card-content p {
-            color: #2d3e50;
+            color: #4a2e1a;
             line-height: 1.7;
             margin-bottom: 1.8rem;
-            font-size: 1.05rem;
+            font-size: 1rem;
         }
-
-        /* Download Button */
         .btn-download {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            background: linear-gradient(95deg, #0f5e5a, #1b7a74);
+            background: linear-gradient(95deg, #5d3a1a, #8b5a2b);
             color: white;
             padding: 14px 28px;
             border-radius: 60px;
@@ -183,112 +141,65 @@
             font-weight: bold;
             font-size: 1.1rem;
             transition: all 0.25s;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 5px 12px rgba(0,0,0,0.15);
             width: 100%;
             max-width: 300px;
             margin: 0 auto;
         }
-
-        .btn-download i {
-            font-size: 1.4rem;
-        }
-
         .btn-download:hover {
-            background: linear-gradient(95deg, #0b4a47, #146b65);
+            background: linear-gradient(95deg, #3f2a10, #6b451f);
             transform: scale(1.02);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.2);
-            letter-spacing: 0.5px;
         }
-
-        /* Footer */
         footer {
-            background: #0b2b26;
-            color: #ddd;
+            background: #5d3a1a;
+            color: #ffd966;
             text-align: center;
             padding: 1.8rem;
             margin-top: 3rem;
-            font-size: 0.9rem;
-            border-top: 2px solid #f9c74f;
+            border-top: 2px solid #ffd966;
         }
-
-        /* Responsive */
         @media (max-width: 700px) {
-            .section {
-                padding: 1rem;
-            }
-            .card-content h3 {
-                font-size: 1.6rem;
-            }
-            .btn-download {
-                font-size: 0.95rem;
-                padding: 12px 20px;
-            }
-            nav ul {
-                gap: 0.5rem;
-            }
-            nav ul li a {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.85rem;
-            }
+            .card-content h3 { font-size: 1.5rem; }
+            .btn-download { font-size: 0.95rem; }
         }
     </style>
 </head>
 <body>
-
-<header>
-    <div class="logo">التقني الدومة</div>
-</header>
-
+<header><div class="logo">التقني الدومة</div></header>
 <nav>
     <ul>
         <li><a href="index.html">الرئيسية</a></li>
-        <li><a href="games.html">الألعاب</a></li>
-        <li><a href="app.html" class="active">التطبيقات</a></li>
+        <li><a href="games.html" class="active">الألعاب</a></li>
+        <li><a href="app.html">التطبيقات</a></li>
         <li><a href="tutorials.html">الشروحات</a></li>
         <li><a href="contact.html">تواصل</a></li>
     </ul>
 </nav>
-
 <section class="section">
-    <h2 class="section-title">التطبيقات</h2>
+    <h2 class="section-title">🎮 ألعاب وتطبيقات ترفيهية</h2>
     <div class="cards">
-        <!-- بطاقة تطبيق القرآن الكريم فقط (تم إزالة تطبيق التقنية بالكامل) -->
+        <!-- بطاقة تطبيق الأمثال السودانية -->
         <div class="card">
             <div class="card-img">
-                <img src="assets/images/Bak.jpg" 
-                     alt="أيقونة تطبيق القرآن الكريم" 
-                     class="quran-icon"
-                     onerror="this.src='https://via.placeholder.com/130?text=Quran'">
+                <img src="assets/images/sudan-amthal-icon.png" alt="أيقونة الأمثال السودانية" class="game-icon" onerror="this.src='https://via.placeholder.com/130?text=Amthal+Sudan'">
             </div>
             <div class="card-content">
-                <h3>📖 تطبيق القرآن الكريم</h3>
-                <div class="version-badge">
-                    <i class="fas fa-code-branch"></i> الإصدار 2026
-                </div>
+                <h3>📜 أمثال السودان</h3>
+                <div class="version-badge"><i class="fas fa-star"></i> الإصدار 1.0</div>
                 <p>
-                    نسخة احترافية متكاملة من المصحف الشريف بواجهة عصرية وسهلة الاستخدام،
-                    تم تطويرها بواسطة <strong>التقني الدومة</strong> لدعم المحتوى العربي والإسلامي
-                    بأفضل تجربة ممكنة. يشمل تلاوات، تفسير مبسط، وإمكانية البحث السريع.
+                    <strong>يا سوداني أصيل!</strong> كنز الحكمة السودانية دابرة في جيبك. أكثر من 1000 مثل شعبي مع شرح ونطق باللهجة. 
+                    من التقني الدومة لأهل السودان في كل مكان. حمل التطبيق وافخر بتراثك.
                 </p>
-                <a href="https://github.com/adamosam1997-afk/aldouma-tech/releases/download/v2026.0/app-release.apk"
-                   class="btn-download"
-                   target="_blank"
+                <a href="https://github.com/adamosam1997-afk/aldouma-tech/releases/download/amthal-sudan-v1/amthal-sudan.apk" 
+                   class="btn-download" 
+                   target="_blank" 
                    rel="noopener noreferrer">
-                    <i class="fab fa-android"></i>
-                    تحميل تطبيق القرآن APK
-                    <i class="fas fa-download"></i>
+                    <i class="fab fa-android"></i> تحميل تطبيق الأمثال APK <i class="fas fa-download"></i>
                 </a>
             </div>
         </div>
-        <!-- نهاية البطاقة -->
+        <!-- يمكنك إضافة المزيد من البطاقات للألعاب الأخرى هنا -->
     </div>
 </section>
-
-<footer>
-    جميع الحقوق محفوظة © التقني الدومة
-</footer>
-
+<footer>جميع الحقوق محفوظة © التقني الدومة</footer>
 </body>
 </html>
