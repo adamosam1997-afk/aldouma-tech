@@ -1,50 +1,122 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>التطبيقات - التقني الدومة</title>
-
+    <title>الشروحات - التقني الدومة | أهمية البرمجة</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* تحسينات إضافية للصفحة */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #0b2b26;
+            margin-bottom: 2rem;
+        }
+        .explanation-box {
+            background: #f9f9f9;
+            border-right: 5px solid #f9c74f;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #333;
+        }
+        .explanation-box h3 {
+            color: #0b2b26;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        .explanation-box p {
+            margin-bottom: 1rem;
+        }
+        .highlight {
+            color: #f9c74f;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #0b2b26;
+            color: white;
+            margin-top: 2rem;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 1.5rem;
+            background: #1e3a3a;
+            padding: 0.8rem;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a.active {
+            color: #f9c74f;
+        }
+    </style>
 </head>
 <body>
 
 <header>
     <div class="logo">التقني الدومة</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="games.html">الألعاب</a></li>
+            <li><a href="app.html">التطبيقات</a></li>
+            <li><a href="tutorials.html" class="active">الشروحات</a></li>
+            <li><a href="contact.html">تواصل</a></li>
+        </ul>
+    </nav>
 </header>
 
 <section class="section">
-
-    <h2 class="section-title">التطبيقات</h2>
-
-    <div class="cards">
-
-        <div class="card">
-            <img src="https://picsum.photos/400/200?3">
-
-            <div class="card-content">
-                <h3>تطبيق القرآن</h3>
-                <p>تطبيق إسلامي احترافي.</p>
-                <a href="#" class="btn">تحميل APK</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://picsum.photos/400/200?4">
-
-            <div class="card-content">
-                <h3>تطبيق التقنية</h3>
-                <p>أخبار وشروحات تقنية.</p>
-                <a href="#" class="btn">تحميل APK</a>
-            </div>
-        </div>
-
+    <h2 class="section-title">💻 أهمية البرمجة واستخداماتها</h2>
+    <div class="explanation-box">
+        <h3>🚀 ما هي البرمجة؟</h3>
+        <p>
+            البرمجة هي لغة العصر الحديث. إنها عملية كتابة تعليمات (أكواد) يفهمها الحاسوب ليقوم بمهام محددة. 
+            من خلال البرمجة، نستطيع أن نأمر الأجهزة والمواقع والتطبيقات بأن تعمل بالطريقة التي نريدها.
+        </p>
+        <h3>🌟 لماذا تعلّم البرمجة مهم لكل سوداني؟</h3>
+        <p>
+            في عصر الرقمنة، <span class="highlight">البرمجة تفتح لك أبواب الفرص</span>: وظائف مرتفعة الدخل، مشاريع حرة (فريلانس)، 
+            وقدرة على إنشاء تطبيقات ومواقع تساعد مجتمعك. <strong>التقني الدومة</strong> يؤمن بأن تعلم البرمجة هو 
+            أساس التطور التقني في السودان.
+        </p>
+        <h3>📱 استخدامات البرمجة في حياتنا اليومية</h3>
+        <p>
+            - <strong>تطبيقات الجوال:</strong> كل تطبيق تفتحه في هاتفك (واتساب، فيسبوك، الخ) صُنع بواسطة البرمجة.<br>
+            - <strong>مواقع الويب:</strong> المتاجر الإلكترونية، منصات التعليم، وحتى موقعنا هذا يعتمد على البرمجة.<br>
+            - <strong>الذكاء الاصطناعي:</strong> المساعدات الصوتية (مثل سيري ومساعد جوجل)، والتعرف على الوجه، والسيارات ذاتية القيادة.<br>
+            - <strong>الأمن السيبراني:</strong> حماية البيانات والمعلومات من الاختراقات.<br>
+            - <strong>الألعاب:</strong> كل لعبة إلكترونية ممتعة هي نتاج برمجيين مبدعين.
+        </p>
+        <h3>🛠️ كيف تبدأ طريقك في البرمجة؟</h3>
+        <p>
+            ابدأ بإحدى اللغات السهلة مثل <strong>Python</strong> أو <strong>JavaScript</strong>. استخدم المصادر المجانية على الإنترنت، 
+            وتدرب يوميًا. <strong>التقني الدومة</strong> ينصحك بالانضمام إلى مجتمعات المبرمجين السودانية للحصول على الدعم وتبادل الخبرات. 
+            تذكر: المبرمج الناجح لا يتوقف عن التعلم أبدًا.
+        </p>
+        <p style="margin-top: 1.5rem; font-weight: bold; text-align: center;">
+            ✨ البرمجة مستقبل السودان، والتقني الدومة هنا ليساعدك على بناء هذا المستقبل ✨
+        </p>
     </div>
-
 </section>
 
 <footer>
     جميع الحقوق محفوظة © التقني الدومة
 </footer>
 
+</body>
 </html>
