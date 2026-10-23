@@ -1,18 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://aldouma-tech.netlify.app/</loc>
-    <lastmod>2026-05-14</lastmod>
-    <priority>1.0</priority>
+    <loc>https://adamosam1997-afk.github.io/aldouma-tech/</loc>
   </url>
   <url>
-    <loc>https://aldouma-tech.netlify.app/about.html</loc>
-    <lastmod>2026-05-14</lastmod>
-    <priority>0.8</priority>
+    <loc>https://adamosam1997-afk.github.io/aldouma-tech/games.html</loc>
   </url>
   <url>
-    <loc>https://aldouma-tech.netlify.app/games.html</loc>
-    <lastmod>2026-05-14</lastmod>
-    <priority>0.8</priority>
+    <loc>https://adamosam1997-afk.github.io/aldouma-tech/app.html</loc>
+  </url>
+  <url>
+    <loc>https://adamosam1997-afk.github.io/aldouma-tech/about.html</loc>
+  </url>
+  <url>
+    <loc>https://adamosam1997-afk.github.io/aldouma-tech/contact.html</loc>
   </url>
 </urlset>
