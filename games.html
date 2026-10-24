@@ -14,22 +14,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        :root {
-            --primary-color: #0b2b26;
-            --accent-color: #f9c74f;
-            --bg-dark: #0f1a24;
-            --bg-card: rgba(255, 255, 255, 0.05);
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
-            --white: #ffffff;
-            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 25px 40px -12px rgba(0, 0, 0, 0.6);
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
         /* ===============================
            إعدادات عامة
            =============================== */
+        :root {
+            --primary-color: #0b2b26;
+            --accent-color: #f9c74f;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --white: #ffffff;
+        }
+
         * { 
             margin: 0; 
             padding: 0; 
@@ -53,7 +48,7 @@
         }
 
         /* ===============================
-           الهيدر الثابت (نفس ترتيب الصفحة الرئيسية)
+           الهيدر الثابت (مطابق للصورة)
            =============================== */
         header {
             background: #0b2b26;
@@ -61,12 +56,12 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             display: flex;
-            flex-direction: column; /* وضع الشعار والروابط فوق بعضهما */
+            flex-direction: column; 
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
             border-bottom: 2px solid rgba(249, 199, 79, 0.2);
         }
         
@@ -75,7 +70,6 @@
             font-weight: 800; 
             color: var(--accent-color); 
             text-shadow: 0 2px 4px rgba(0,0,0,0.3); 
-            margin: 0;
         }
         
         nav {
@@ -84,21 +78,19 @@
 
         nav ul { 
             display: flex; 
-            flex-wrap: wrap; /* للسماح للروابط بالالتفاف لسطر جديد */
+            flex-wrap: wrap; 
             justify-content: center; 
             align-items: center;
             list-style: none; 
             gap: 8px; 
-            padding: 0;
-            margin: 0;
         }
         
         nav ul li a { 
             color: var(--text-light); 
-            font-weight: 600; 
+            font-weight: 700; 
             padding: 8px 18px; 
             border-radius: 50px; 
-            transition: var(--transition); 
+            transition: all 0.3s ease; 
             font-size: 1rem; 
             display: inline-block;
         }
@@ -146,18 +138,16 @@
         }
 
         .game-card { 
-            background: var(--bg-card); 
+            background: rgba(255, 255, 255, 0.05); 
             backdrop-filter: blur(12px); 
             border-radius: 30px; 
             overflow: hidden; 
-            box-shadow: var(--shadow-lg); 
-            transition: var(--transition); 
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.6); 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
             max-width: 600px; 
             width: 100%; 
             text-align: center; 
             border: 1px solid rgba(249, 199, 79, 0.3); 
-            animation: slideUp 0.8s ease-out forwards; 
-            opacity: 0; 
         }
         
         .game-card:hover { 
@@ -178,7 +168,7 @@
             height: 180px; 
             object-fit: contain; 
             filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4)); 
-            transition: var(--transition); 
+            transition: all 0.4s ease; 
             border-radius: 30px; 
         }
         
@@ -233,7 +223,7 @@
             border-radius: 50px; 
             font-weight: 800; 
             font-size: 1.2rem; 
-            transition: var(--transition); 
+            transition: all 0.3s ease; 
             box-shadow: 0 10px 20px rgba(249, 199, 79, 0.3); 
             width: 100%; 
             max-width: 350px; 
@@ -284,7 +274,7 @@
             border-radius: 50%; 
             background: rgba(255, 255, 255, 0.05); 
             color: var(--white); 
-            transition: var(--transition); 
+            transition: all 0.3s ease; 
         }
         
         .social-links a:hover { 
@@ -308,10 +298,10 @@
             font-size: 1.2rem; 
             cursor: pointer; 
             border: none; 
-            box-shadow: var(--shadow-md); 
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4); 
             opacity: 0; 
             visibility: hidden; 
-            transition: var(--transition); 
+            transition: all 0.3s ease; 
             z-index: 999; 
         }
         
@@ -326,15 +316,7 @@
         }
 
         /* ===============================
-           الحركات (Animations)
-           =============================== */
-        @keyframes slideUp { 
-            from { opacity: 0; transform: translateY(50px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
-
-        /* ===============================
-           التجاوب مع الهواتف (Responsive)
+           التجاوب مع الهواتف
            =============================== */
         @media (max-width: 600px) {
             nav ul {
@@ -369,10 +351,9 @@
 </head>
 <body>
 
-    <!-- بداية الترويسة (نفس ترتيب الصفحة الرئيسية) -->
+    <!-- الهيدر -->
     <header>
         <div class="logo">التقني الدومة</div>
-        
         <nav>
             <ul>
                 <li><a href="index.html">الرئيسية</a></li>
@@ -389,7 +370,6 @@
     <main>
         <h2 class="section-title">🎲 لعبة الحكمة السودانية</h2>
         
-        <!-- بطاقة اللعبة -->
         <div class="game-card">
             <div class="card-header-icon">
                 <img src="assets/images/app_icon.png" 
@@ -427,9 +407,9 @@
         <div class="footer-content">
             <p>جميع الحقوق محفوظة © <strong>التقني الدومة - آدم عصام</strong> 2026</p>
             <div class="social-links">
-                <a href="https://www.facebook.com/" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://github.com/adamosam1997-afk" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="contact.html" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://github.com/adamosam1997-afk" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="contact.html"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
@@ -441,226 +421,6 @@
 
     <!-- السكريبت -->
     <script>
-        // زر العودة للأعلى
-        const backToTopBtn = document.getElementById("backToTop");
-        
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add("show");
-            } else {
-                backToTopBtn.classList.remove("show");
-            }
-        });
-
-        backToTopBtn.addEventListener("click", () => {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        });
-    </script>
-
-    <!-- HilltopAds Popunder Script Code -->
-    <script>
-    (function(rmnz){
-    var d = document,
-        s = d.createElement('script'),
-        l = d.currentScript || d.scripts[d.scripts.length - 1];
-    s.settings = rmnz || {};
-    s.src = "\/\/vapid-size.com\/crD.9l6vb\/2Z5nl\/SMWtQ-9lNUziUj0BNXTRcPwMORSi0\/3kN\/TBQy1oNgzOEfzw";
-    s.async = true;
-    s.referrerPolicy = 'no-referrer-when-downgrade';
-    l.parentNode.insertBefore(s, l);
-    })({})
-    </script>
-
-</body>
-</html>    transform: translateY(-5px); 
-        }
-
-        /* ===============================
-           الحركات (Animations)
-           =============================== */
-        @keyframes slideUp { 
-            from { opacity: 0; transform: translateY(50px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
-
-        /* ===============================
-           التجاوب مع الهواتف (Responsive)
-           =============================== */
-        @media (max-width: 900px) {
-            .menu-toggle { 
-                display: block; 
-            }
-
-            nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 70%;
-                height: 100vh;
-                background: var(--primary-color);
-                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-                transition: 0.4s ease-in-out;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                z-index: 1000;
-            }
-
-            nav.active { 
-                right: 0; 
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 1.5rem;
-                width: 100%;
-                text-align: center;
-            }
-
-            nav ul li { 
-                width: 100%; 
-            }
-            
-            nav ul li a {
-                display: block;
-                padding: 1rem;
-                font-size: 1.2rem;
-                border-radius: 0;
-            }
-
-            main { 
-                padding: 3rem 1rem; 
-            }
-            
-            .section-title { 
-                font-size: 2rem; 
-            }
-            
-            .card-content { 
-                padding: 1rem 1.5rem 2rem; 
-            }
-            
-            .card-content h3 { 
-                font-size: 1.8rem; 
-            }
-            
-            .game-icon { 
-                width: 140px; 
-                height: 140px; 
-            }
-            
-            .btn-download { 
-                font-size: 1rem; 
-                padding: 14px 20px; 
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- بداية الترويسة -->
-    <header>
-        <div class="logo">التقني الدومة</div>
-        
-        <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">
-            <i class="fas fa-bars"></i>
-        </button>
-
-        <nav id="navbar">
-            <ul>
-                <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="games.html" class="active">الألعاب</a></li>
-                <li><a href="app.html">التطبيقات</a></li>
-                <li><a href="tutorials.html">الشروحات</a></li>
-                <li><a href="videos.html">الفيديوهات</a></li>
-                <li><a href="contact.html">تواصل</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- المحتوى الرئيسي -->
-    <main>
-        <h2 class="section-title">🎲 لعبة الحكمة السودانية</h2>
-        
-        <!-- بطاقة اللعبة -->
-        <div class="game-card">
-            <div class="card-header-icon">
-                <img src="assets/images/app_icon.png" 
-                     alt="أيقونة الأمثال السودانية" 
-                     class="game-icon"
-                     onerror="this.src='https://via.placeholder.com/180?text=Amthal+Sudan'">
-            </div>
-            
-            <div class="card-content">
-                <h3>📜 أمثال السودان</h3>
-                
-                <div class="version-badge">
-                    <i class="fas fa-trophy"></i> لعبة ثقافية · الإصدار 1.0
-                </div>
-                
-                <p>
-                    <strong>يا سوداني، ده لعبتك!</strong> اختبر معرفتك بالأمثال السودانية، وتعلم حكم الأجداد بطريقة تفاعلية ممتعة. 
-                    تحتوي اللعبة على 300 مثل وحكمة، واجهة عصرية، وتحديات يومية. 
-                    صُنعت بكل حب من <strong>التقني الدومة</strong> لأهل السودان في كل مكان.
-                </p>
-                
-                <a href="https://github.com/adamosam1997-afk/aldouma-tech/releases/download/v1.0-sudan-amthal/default.apk" 
-                   class="btn-download" 
-                   target="_blank" 
-                   rel="noopener noreferrer">
-                    <i class="fab fa-android"></i> تحميل اللعبة APK
-                    <i class="fas fa-download"></i>
-                </a>
-            </div>
-        </div>
-    </main>
-
-    <!-- الفوتر -->
-    <footer>
-        <div class="footer-content">
-            <p>جميع الحقوق محفوظة © <strong>التقني الدومة - آدم عصام</strong> 2026</p>
-            <div class="social-links">
-                <a href="https://www.facebook.com/" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://github.com/adamosam1997-afk" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="contact.html" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- زر العودة للأعلى -->
-    <button id="backToTop" aria-label="العودة للأعلى">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- السكريبت الخاص بالتصميم -->
-    <script>
-        // 1. قائمة الهواتف (Hamburger Menu)
-        const menuToggle = document.getElementById('menuToggle');
-        const navbar = document.getElementById('navbar');
-
-        menuToggle.addEventListener('click', () => {
-            navbar.classList.toggle('active');
-            const icon = menuToggle.querySelector('i');
-            if (navbar.classList.contains('active')) {
-                icon.classList.replace('fa-bars', 'fa-times');
-            } else {
-                icon.classList.replace('fa-times', 'fa-bars');
-            }
-        });
-
-        // إغلاق القائمة عند النقر على أي رابط
-        document.querySelectorAll('nav ul li a').forEach(link => {
-            link.addEventListener('click', () => {
-                navbar.classList.remove('active');
-                menuToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
-            });
-        });
-
-        // 2. زر العودة للأعلى
         const backToTopBtn = document.getElementById("backToTop");
         
         window.addEventListener("scroll", () => {
