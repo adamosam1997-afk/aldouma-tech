@@ -1,46 +1,419 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>من نحن - التقني الدومة</title>
+    
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ===============================
+           إعدادات عامة
+           =============================== */
+        :root {
+            --primary-color: #0b2b26;
+            --accent-color: #f9c74f;
+            --bg-light: #f8fafc;
+            --text-dark: #1e2a3e;
+            --text-muted: #64748b;
+            --white: #ffffff;
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 25px 40px -12px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s ease;
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        html { 
+            scroll-behavior: smooth; 
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #f5f7fc 0%, #e9eef5 100%);
+            color: var(--text-dark);
+            line-height: 1.8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        a { 
+            text-decoration: none; 
+            color: inherit; 
+        }
+
+        /* ===============================
+           الهيدر الثابت (مطابق للصورة)
+           =============================== */
+        header {
+            background: #0b2b26;
+            padding: 15px 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px solid rgba(249, 199, 79, 0.2);
+        }
+        
+        .logo { 
+            font-size: 1.8rem; 
+            font-weight: 800; 
+            color: var(--accent-color); 
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3); 
+        }
+        
+        nav {
+            width: 100%;
+        }
+
+        nav ul { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            align-items: center;
+            list-style: none; 
+            gap: 8px; 
+        }
+        
+        nav ul li a { 
+            color: var(--white); 
+            font-weight: 700; 
+            padding: 8px 18px; 
+            border-radius: 50px; 
+            transition: var(--transition); 
+            font-size: 1rem; 
+            display: inline-block;
+        }
+        
+        nav ul li a:hover, 
+        nav ul li a.active { 
+            background: var(--accent-color); 
+            color: var(--primary-color); 
+            box-shadow: 0 4px 10px rgba(249, 199, 79, 0.3); 
+        }
+
+        /* ===============================
+           المحتوى الرئيسي (من نحن)
+           =============================== */
+        main { 
+            flex: 1; 
+            padding: 4rem 1rem; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+
+        .section-title { 
+            text-align: center; 
+            font-size: 2.5rem; 
+            margin-bottom: 3rem; 
+            color: var(--primary-color); 
+            font-weight: 800; 
+            position: relative; 
+            display: inline-block; 
+            padding-bottom: 0.5rem; 
+        }
+        
+        .section-title::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 60%; 
+            height: 4px; 
+            background: var(--accent-color); 
+            border-radius: 2px; 
+        }
+
+        .about-card {
+            background: var(--white);
+            border-radius: 30px;
+            padding: 3rem;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(249, 199, 79, 0.2);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .about-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            background: #fef3c7;
+            width: 90px;
+            height: 90px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            line-height: 2;
+        }
+
+        .about-text strong {
+            color: var(--primary-color);
+            font-weight: 800;
+        }
+
+        /* تنسيق زر الدايركت لينك */
+        .direct-link-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 20px rgba(243, 156, 18, 0.4);
+            transition: var(--transition);
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        .direct-link-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(243, 156, 18, 0.6);
+        }
+
+        /* ===============================
+           الفوتر وزر العودة للأعلى
+           =============================== */
+        footer { 
+            background: #081f1b; 
+            color: #a0aec0; 
+            text-align: center; 
+            padding: 2.5rem 2rem; 
+            border-top: 4px solid var(--accent-color); 
+            margin-top: auto; 
+        }
+        
+        .footer-content p { 
+            margin-bottom: 1.5rem; 
+        }
+        
+        .footer-content strong { 
+            color: var(--accent-color); 
+        }
+        
+        .social-links { 
+            display: flex; 
+            justify-content: center; 
+            gap: 1.5rem; 
+        }
+        
+        .social-links a { 
+            display: inline-flex; 
+            justify-content: center; 
+            align-items: center; 
+            width: 45px; 
+            height: 45px; 
+            border-radius: 50%; 
+            background: rgba(255, 255, 255, 0.05); 
+            color: var(--white); 
+            transition: var(--transition); 
+        }
+        
+        .social-links a:hover { 
+            background: var(--accent-color); 
+            color: var(--primary-color); 
+            transform: translateY(-5px); 
+        }
+
+        #backToTop { 
+            position: fixed; 
+            bottom: 30px; 
+            left: 30px; 
+            background: var(--accent-color); 
+            color: var(--primary-color); 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            font-size: 1.2rem; 
+            cursor: pointer; 
+            border: none; 
+            box-shadow: var(--shadow-md); 
+            opacity: 0; 
+            visibility: hidden; 
+            transition: var(--transition); 
+            z-index: 999; 
+        }
+        
+        #backToTop.show { 
+            opacity: 1; 
+            visibility: visible; 
+        }
+        
+        #backToTop:hover { 
+            background: var(--primary-color); 
+            color: var(--accent-color); 
+            transform: translateY(-5px); 
+        }
+
+        /* ===============================
+           الحركات والتجاوب
+           =============================== */
+        @keyframes fadeInUp { 
+            from { opacity: 0; transform: translateY(40px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                gap: 5px;
+            }
+            nav ul li a {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            main {
+                padding: 2rem 1rem;
+            }
+            .section-title { 
+                font-size: 1.8rem; 
+            }
+            .about-card {
+                padding: 2rem 1.5rem;
+            }
+            .about-text {
+                font-size: 1.1rem;
+            }
+            .about-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+            .direct-link-btn {
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">التقني الدومة</div>
-</header>
+    <!-- الهيدر -->
+    <header>
+        <div class="logo">التقني الدومة</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="games.html">الألعاب</a></li>
+                <li><a href="app.html">التطبيقات</a></li>
+                <li><a href="tutorials.html">الشروحات</a></li>
+                <li><a href="videos.html">الفيديوهات</a></li>
+                <li><a href="contact.html">تواصل</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<section class="section">
+    <!-- المحتوى الرئيسي -->
+    <main>
+        <h2 class="section-title">من نحن</h2>
+        
+        <div class="about-card">
+            <div class="about-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            
+            <p class="about-text">
+                <strong>التقني الدومة</strong> منصة تقنية متخصصة في الألعاب والتطبيقات والبرمجة والتصميم.
+                نهدف إلى تقديم محتوى احترافي يساعد الشباب على تعلم التقنية ومواكبة التطور الرقمي،
+                ونعمل دائماً على تقديم أفضل تجربة ممكنة لمستخدمينا.
+            </p>
+            
+            <!-- 🟢 زر الدايركت لينك (Direct Link) -->
+            <a href="https://plump-plastic.com/b/3CVl0xP.3/pgv/bFmtV/JYZdDG0X3qNmThQ/1nNEzyA/5cLnTPcL1/N/DOUO3pM-T/MN" 
+               target="_blank" 
+               class="direct-link-btn">
+                <i class="fas fa-gift"></i> اكتشف عروضنا الحصرية 🎁
+            </a>
+        </div>
+    </main>
 
-    <h2 class="section-title">من نحن</h2>
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-content">
+            <p>جميع الحقوق محفوظة © <strong>التقني الدومة - آدم عصام</strong> 2026</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://github.com/adamosam1997-afk" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="contact.html"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
 
-    <p style="text-align:center; max-width:800px; margin:auto; line-height:2;">
-        التقني الدومة منصة تقنية متخصصة في الألعاب والتطبيقات والبرمجة والتصميم.
-        نهدف إلى تقديم محتوى احترافي يساعد الشباب على تعلم التقنية.
-    </p>
+    <!-- زر العودة للأعلى -->
+    <button id="backToTop" aria-label="العودة للأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-</section>
+    <!-- السكريبت -->
+    <script>
+        const backToTopBtn = document.getElementById("backToTop");
+        
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        });
 
-<footer>
-    جميع الحقوق محفوظة © التقني الدومة
-</footer>
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
 
-<!-- HilltopAds Popunder Script Code -->
-<script>
-(function(rmnz){
-var d = document,
-    s = d.createElement('script'),
-    l = d.currentScript || d.scripts[d.scripts.length - 1];
-s.settings = rmnz || {};
-s.src = "\/\/vapid-size.com\/crD.9l6vb\/2Z5nl\/SMWtQ-9lNUziUj0BNXTRcPwMORSi0\/3kN\/TBQy1oNgzOEfzw";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})
-</script>
+    <!-- 🟢 كود HilltopAds Popunder الجديد (pop1) -->
+    <script>
+    (function(jqxxv){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.currentScript || d.scripts[d.scripts.length - 1];
+    s.settings = jqxxv || {};
+    s.src = "\/\/vapid-size.com\/crDs9.6WbF2v5Gl\/S\/WBQO9wNAzOU\/0XNuTqcFw-O_SM0m3cNtToQj1DNtzHEAzA";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
+    </script>
 
 </body>
 </html>
