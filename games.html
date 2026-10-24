@@ -5,334 +5,142 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>الألعاب - التقني الدومة | لعبة الأمثال السودانية</title>
     
-    <!-- Google Fonts: Cairo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* ===============================
-           CSS Variables (الهوية البصرية)
-           =============================== */
         :root {
-            --primary-color: #0b2b26; /* الأخضر الداكن */
-            --accent-color: #f9c74f;  /* الذهبي/الأصفر */
-            --accent-hover: #e0b03b;
+            --primary-color: #0b2b26;
+            --accent-color: #f9c74f;
             --bg-dark: #0f1a24;
             --bg-card: rgba(255, 255, 255, 0.05);
             --text-light: #f8fafc;
             --text-muted: #94a3b8;
             --white: #ffffff;
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
             --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
             --shadow-lg: 0 25px 40px -12px rgba(0, 0, 0, 0.6);
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* ===============================
-           Global Styles (الإعدادات العامة)
-           =============================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; background: linear-gradient(135deg, #1a2a3a 0%, #0f1a24 100%); color: var(--text-light); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
-            background: linear-gradient(135deg, #1a2a3a 0%, #0f1a24 100%);
-            color: var(--text-light);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* ===============================
-           Header & Navigation (الترويسة)
-           =============================== */
+        /* --- الهيدر الثابت (Sticky Header) --- */
         header {
-            background: rgba(11, 43, 38, 0.95);
+            background: rgba(11, 43, 38, 0.98);
             backdrop-filter: blur(10px);
             padding: 0.8rem 5%;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow-sm);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
             border-bottom: 1px solid rgba(249, 199, 79, 0.2);
         }
+        .logo { font-size: 1.8rem; font-weight: 800; color: var(--accent-color); text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        nav ul { display: flex; list-style: none; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+        nav ul li a { color: var(--text-light); font-weight: 600; padding: 0.5rem 1.2rem; border-radius: 50px; transition: var(--transition); font-size: 1rem; }
+        nav ul li a:hover, nav ul li a.active { background: var(--accent-color); color: var(--primary-color); box-shadow: 0 4px 10px rgba(249, 199, 79, 0.3); }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--accent-color);
-            letter-spacing: 1px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            z-index: 1001;
+        main { flex: 1; padding: 4rem 2rem; display: flex; flex-direction: column; align-items: center; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: var(--accent-color); font-weight: 800; position: relative; display: inline-block; padding-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 4px; background: var(--accent-color); border-radius: 2px; }
+
+        .game-card { background: var(--bg-card); backdrop-filter: blur(12px); border-radius: 30px; overflow: hidden; box-shadow: var(--shadow-lg); transition: var(--transition); max-width: 600px; width: 100%; text-align: center; border: 1px solid rgba(249, 199, 79, 0.3); animation: slideUp 0.8s ease-out forwards; opacity: 0; }
+        .game-card:hover { transform: translateY(-10px); box-shadow: 0 35px 50px -15px rgba(0,0,0,0.7); border-color: var(--accent-color); background: rgba(255, 255, 255, 0.08); }
+
+        .card-header-icon { background: radial-gradient(circle, rgba(249,199,79,0.2) 0%, transparent 70%); padding: 3rem 2rem 2rem; position: relative; }
+        .game-icon { width: 180px; height: 180px; object-fit: contain; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4)); transition: var(--transition); border-radius: 30px; }
+        .game-card:hover .game-icon { transform: scale(1.08) rotate(2deg); }
+
+        .card-content { padding: 1rem 2.5rem 2.5rem; }
+        .card-content h3 { font-size: 2.2rem; color: var(--accent-color); margin-bottom: 1rem; font-weight: 800; }
+        .version-badge { background: rgba(44, 74, 62, 0.8); color: #ffd966; padding: 0.5rem 1.5rem; border-radius: 50px; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 1.5rem; font-weight: 700; font-size: 0.95rem; border: 1px solid rgba(255, 217, 102, 0.2); }
+        .card-content p { color: var(--text-muted); line-height: 1.8; margin-bottom: 2.5rem; font-size: 1.1rem; }
+        .card-content strong { color: var(--white); }
+
+        .btn-download { display: inline-flex; align-items: center; justify-content: center; gap: 15px; background: linear-gradient(135deg, #f9c74f, #e0b03b); color: var(--primary-color); padding: 16px 40px; border-radius: 50px; font-weight: 800; font-size: 1.2rem; transition: var(--transition); box-shadow: 0 10px 20px rgba(249, 199, 79, 0.3); width: 100%; max-width: 350px; margin: 0 auto; border: 2px solid transparent; }
+        .btn-download:hover { background: var(--white); color: var(--primary-color); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2); border-color: var(--accent-color); }
+
+        footer { background: #081f1b; color: #a0aec0; text-align: center; padding: 2rem; border-top: 3px solid var(--accent-color); margin-top: auto; }
+        .footer-content p { margin-bottom: 1.5rem; }
+        .footer-content strong { color: var(--accent-color); }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; }
+        .social-links a { display: inline-flex; justify-content: center; align-items: center; width: 45px; height: 45px; border-radius: 50%; background: rgba(255, 255, 255, 0.05); color: var(--white); transition: var(--transition); }
+        .social-links a:hover { background: var(--accent-color); color: var(--primary-color); transform: translateY(-5px); }
+
+        #backToTop { position: fixed; bottom: 30px; left: 30px; background: var(--accent-color); color: var(--primary-color); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.2rem; cursor: pointer; border: none; box-shadow: var(--shadow-md); opacity: 0; visibility: hidden; transition: var(--transition); z-index: 999; }
+        #backToTop.show { opacity: 1; visibility: visible; }
+        #backToTop:hover { background: var(--white); transform: translateY(-5px); }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 1rem; }
+            .section-title { font-size: 2rem; }
+            .card-content h3 { font-size: 1.8rem; }
+            .game-icon { width: 140px; height: 140px; }
         }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">التقني الدومة</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="games.html" class="active">الألعاب</a></li>
+                <li><a href="app.html">التطبيقات</a></li>
+                <li><a href="tutorials.html">الشروحات</a></li>
+                <li><a href="videos.html">الفيديوهات</a></li>
+                <li><a href="contact.html">تواصل</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 0.5rem;
-            align-items: center;
-        }
+    <main>
+        <h2 class="section-title">🎲 لعبة الحكمة السودانية</h2>
+        <div class="game-card">
+            <div class="card-header-icon">
+                <img src="assets/images/app_icon.png" alt="أيقونة الأمثال السودانية" class="game-icon" onerror="this.src='https://via.placeholder.com/180?text=Amthal+Sudan'">
+            </div>
+            <div class="card-content">
+                <h3>📜 أمثال السودان</h3>
+                <div class="version-badge"><i class="fas fa-trophy"></i> لعبة ثقافية · الإصدار 1.0</div>
+                <p><strong>يا سوداني، ده لعبتك!</strong> اختبر معرفتك بالأمثال السودانية، وتعلم حكم الأجداد بطريقة تفاعلية ممتعة. تحتوي اللعبة على 300 مثل وحكمة، واجهة عصرية، وتحديات يومية. صُنعت بكل حب من <strong>التقني الدومة</strong> لأهل السودان في كل مكان.</p>
+                <a href="https://github.com/adamosam1997-afk/aldouma-tech/releases/download/v1.0-sudan-amthal/default.apk" class="btn-download" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-android"></i> تحميل اللعبة APK <i class="fas fa-download"></i>
+                </a>
+            </div>
+        </div>
+    </main>
 
-        nav ul li a {
-            color: var(--text-light);
-            font-weight: 600;
-            padding: 0.6rem 1.2rem;
-            border-radius: 50px;
-            transition: var(--transition);
-            font-size: 1rem;
-        }
+    <footer>
+        <div class="footer-content">
+            <p>جميع الحقوق محفوظة © <strong>التقني الدومة - آدم عصام</strong> 2026</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://github.com/adamosam1997-afk" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="contact.html"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
 
-        nav ul li a:hover,
-        nav ul li a.active {
-            background: var(--accent-color);
-            color: var(--primary-color);
-            box-shadow: 0 4px 10px rgba(249, 199, 79, 0.3);
-        }
-
-        .menu-toggle {
-            display: none;
-            background: transparent;
-            border: none;
-            color: var(--accent-color);
-            font-size: 1.8rem;
-            cursor: pointer;
-            z-index: 1001;
-            transition: var(--transition);
-        }
-
-        /* ===============================
-           Main Content (المحتوى الرئيسي)
-           =============================== */
-        main {
-            flex: 1;
-            padding: 4rem 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--accent-color);
-            font-weight: 800;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 0.5rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 4px;
-            background: var(--accent-color);
-            border-radius: 2px;
-        }
-
-        /* ===============================
-           Game Card (بطاقة اللعبة)
-           =============================== */
-        .game-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            transition: var(--transition);
-            max-width: 600px;
-            width: 100%;
-            text-align: center;
-            border: 1px solid rgba(249, 199, 79, 0.3);
-            animation: slideUp 0.8s ease-out forwards;
-            opacity: 0;
-        }
-
-        .game-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 35px 50px -15px rgba(0,0,0,0.7);
-            border-color: var(--accent-color);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        /* حاوية الأيقونة */
-        .card-header-icon {
-            background: radial-gradient(circle, rgba(249,199,79,0.2) 0%, transparent 70%);
-            padding: 3rem 2rem 2rem;
-            position: relative;
-        }
-
-        .game-icon {
-            width: 180px;
-            height: 180px;
-            object-fit: contain;
-            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4));
-            transition: var(--transition);
-            border-radius: 30px; /* في حال كانت الصورة مربعة */
-        }
-
-        .game-card:hover .game-icon {
-            transform: scale(1.08) rotate(2deg);
-        }
-
-        /* محتوى البطاقة */
-        .card-content {
-            padding: 1rem 2.5rem 2.5rem;
-        }
-
-        .card-content h3 {
-            font-size: 2.2rem;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-
-        .version-badge {
-            background: rgba(44, 74, 62, 0.8);
-            color: #ffd966;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            font-size: 0.95rem;
-            border: 1px solid rgba(255, 217, 102, 0.2);
-        }
-
-        .card-content p {
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
-            font-size: 1.1rem;
-        }
-
-        .card-content strong {
-            color: var(--white);
-        }
-
-        /* زر التحميل */
-        .btn-download {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            background: linear-gradient(135deg, #f9c74f, #e0b03b);
-            color: var(--primary-color);
-            padding: 16px 40px;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 1.2rem;
-            transition: var(--transition);
-            box-shadow: 0 10px 20px rgba(249, 199, 79, 0.3);
-            width: 100%;
-            max-width: 350px;
-            margin: 0 auto;
-            border: 2px solid transparent;
-        }
-
-        .btn-download i {
-            font-size: 1.6rem;
-        }
-
-        .btn-download:hover {
-            background: var(--white);
-            color: var(--primary-color);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2);
-            border-color: var(--accent-color);
-        }
-
-        /* ===============================
-           Footer (الفوتر)
-           =============================== */
-        footer {
-            background: #081f1b;
-            color: #a0aec0;
-            text-align: center;
-            padding: 2rem;
-            border-top: 3px solid var(--accent-color);
-            margin-top: auto;
-        }
-
-        .footer-content p {
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-        }
-
-        .footer-content strong {
-            color: var(--accent-color);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--white);
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background: var(--accent-color);
-            color: var(--primary-color);
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(249, 199, 79, 0.3);
-        }
-
-        /* زر العودة للأعلى */
-        #backToTop {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background: var(--accent-color);
-            color: var(--primary-color);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.2rem;
-            cursor: pointer;
+    <button id="backToTop" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
+    <script>
+        const backToTopBtn = document.getElementById("backToTop");
+        window.addEventListener("scroll", () => { if (window.scrollY > 300) { backToTopBtn.classList.add("show"); } else { backToTopBtn.classList.remove("show"); } });
+        backToTopBtn.addEventListener("click", () => { window.scrollTo({ top: 0, behavior: "smooth" }); });
+    </script>
+</body>
+</html>sor: pointer;
             border: none;
             box-shadow: var(--shadow-md);
             opacity: 0;
