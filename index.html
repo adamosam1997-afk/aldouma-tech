@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        /* ===============================
+           إعدادات عامة (الهوية البصرية)
+           =============================== */
         :root {
             --primary-color: #0b2b26;
             --accent-color: #f9c74f;
@@ -38,27 +41,64 @@
         }
         a { text-decoration: none; color: inherit; }
 
-        /* --- الهيدر الثابت (Sticky Header) --- */
+        /* ===============================
+           الهيدر الثابت (مطابق للصورة)
+           =============================== */
         header {
-            background: rgba(11, 43, 38, 0.98);
-            backdrop-filter: blur(10px);
-            padding: 0.8rem 5%;
+            background: #0b2b26;
+            padding: 15px 10px;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             display: flex;
-            justify-content: space-between;
+            flex-direction: column; 
+            justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            gap: 15px;
+            border-bottom: 2px solid rgba(249, 199, 79, 0.2);
         }
-        .logo { font-size: 1.8rem; font-weight: 800; color: var(--accent-color); text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-        nav ul { display: flex; list-style: none; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
-        nav ul li a { color: var(--white); font-weight: 600; padding: 0.5rem 1.2rem; border-radius: 50px; transition: var(--transition); font-size: 1rem; }
-        nav ul li a:hover, nav ul li a.active { background: var(--accent-color); color: var(--primary-color); box-shadow: 0 4px 10px rgba(249, 199, 79, 0.3); }
+        
+        .logo { 
+            font-size: 1.8rem; 
+            font-weight: 800; 
+            color: var(--accent-color); 
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3); 
+        }
+        
+        nav {
+            width: 100%;
+        }
 
-        /* --- Hero Section --- */
+        nav ul { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            align-items: center;
+            list-style: none; 
+            gap: 8px; 
+        }
+        
+        nav ul li a { 
+            color: var(--white); 
+            font-weight: 700; 
+            padding: 8px 18px; 
+            border-radius: 50px; 
+            transition: var(--transition); 
+            font-size: 1rem; 
+            display: inline-block;
+        }
+        
+        nav ul li a:hover, 
+        nav ul li a.active { 
+            background: var(--accent-color); 
+            color: var(--primary-color); 
+            box-shadow: 0 4px 10px rgba(249, 199, 79, 0.3); 
+        }
+
+        /* ===============================
+           Hero Section (القسم الرئيسي)
+           =============================== */
         .hero {
             background: linear-gradient(135deg, #e0f2fe 0%, #dcfce7 100%);
             text-align: center;
@@ -73,7 +113,9 @@
         .hero-badges { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
         .hero-badge { background: var(--white); padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 700; color: var(--primary-color); box-shadow: var(--shadow-sm); display: flex; align-items: center; gap: 0.5rem; }
 
-        /* --- Cards Section --- */
+        /* ===============================
+           Cards Section (البطاقات)
+           =============================== */
         .section { max-width: 1200px; margin: 0 auto 4rem auto; padding: 0 2rem; }
         .section-title { text-align: center; font-size: 2.2rem; color: var(--primary-color); margin-bottom: 3rem; font-weight: 800; position: relative; display: inline-block; left: 50%; transform: translateX(-50%); }
         .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60%; height: 4px; background: var(--accent-color); border-radius: 2px; }
@@ -88,14 +130,18 @@
         .btn { display: inline-block; background: var(--primary-color); color: var(--white); padding: 12px 30px; border-radius: 50px; font-weight: 700; transition: var(--transition); border: 2px solid var(--primary-color); }
         .btn:hover { background: var(--accent-color); border-color: var(--accent-color); color: var(--primary-color); box-shadow: 0 4px 15px rgba(249, 199, 79, 0.4); }
 
-        /* --- Contact Banner --- */
+        /* ===============================
+           Contact Banner (قسم التواصل)
+           =============================== */
         .contact-banner { background: var(--primary-color); border-radius: 30px; padding: 4rem 2rem; text-align: center; color: var(--white); box-shadow: var(--shadow-md); }
         .contact-banner h2 { font-size: 2rem; margin-bottom: 1rem; color: var(--accent-color); }
         .contact-banner p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; }
         .contact-banner .btn { background: var(--accent-color); color: var(--primary-color); border-color: var(--accent-color); }
         .contact-banner .btn:hover { background: var(--white); border-color: var(--white); }
 
-        /* --- Footer & Back to Top --- */
+        /* ===============================
+           Footer & Back to Top (الفوتر)
+           =============================== */
         footer { background: #081f1b; color: #a0aec0; text-align: center; padding: 3rem 2rem; border-top: 4px solid var(--accent-color); }
         .footer-content p { margin-bottom: 1.5rem; }
         .footer-content strong { color: var(--accent-color); }
@@ -107,14 +153,28 @@
         #backToTop.show { opacity: 1; visibility: visible; }
         #backToTop:hover { background: var(--primary-color); color: var(--accent-color); transform: translateY(-5px); }
 
-        @media (max-width: 768px) {
-            header { flex-direction: column; padding: 1rem; }
+        /* ===============================
+           التجاوب مع الهواتف
+           =============================== */
+        @media (max-width: 600px) {
+            nav ul {
+                gap: 5px;
+            }
+            nav ul li a {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            .hero { padding: 4rem 1.5rem; border-radius: 0 0 30px 30px; }
             .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .section-title { font-size: 1.8rem; }
             .cards { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
+
+    <!-- الهيدر -->
     <header>
         <div class="logo">التقني الدومة</div>
         <nav>
@@ -129,201 +189,10 @@
         </nav>
     </header>
 
+    <!-- القسم الرئيسي -->
     <section class="hero">
         <h1>مرحباً بك في منصة <span>التقني الدومة</span> 🚀</h1>
         <p>بوابة المهندس <strong>آدم عصام الدين</strong>، خريج كلية علوم الحاسوب وتقانة المعلومات. نعمل على تطوير البرمجيات وتقديم أحدث التطبيقات والألعاب والشروحات التقنية بأعلى معايير الجودة.</p>
-        <div class="hero-badges">
-            <div class="hero-badge"><i class="fas fa-mobile-alt" style="color:#0b2b26;"></i> Flutter</div>
-            <div class="hero-badge"><i class="fas fa-gamepad" style="color:#0b2b26;"></i> Unity</div>
-            <div class="hero-badge"><i class="fas fa-code" style="color:#0b2b26;"></i> Web Dev</div>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2 class="section-title">استكشف خدماتنا</h2>
-        <div class="cards">
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-gamepad"></i></div>
-                <h3>الألعاب</h3>
-                <p>استمتع بألعاب حديثة تم تطويرها باستخدام محرك Unity مع تصميم ورسوميات مميزة.</p>
-                <a href="games.html" class="btn">دخول الألعاب</a>
-            </div>
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-mobile-screen-button"></i></div>
-                <h3>التطبيقات</h3>
-                <p>اكتشف تطبيقات خدمية مصممة بعناية لمستخدمي أجهزة الأندرويد، تركز على سهولة الاستخدام.</p>
-                <a href="app.html" class="btn">دخول التطبيقات</a>
-            </div>
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
-                <h3>الشروحات</h3>
-                <p>شروحات مبسطة وعملية في البرمجة وتطوير المواقع والتطبيقات بلغات مختلفة.</p>
-                <a href="tutorials.html" class="btn">دخول الشروحات</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="contact-banner">
-            <h2>📞 تواصل مع المطور</h2>
-            <p>لديك فكرة مشروع، استفسار تقني، أو ترغب في التعاون؟ نحن هنا من أجلك.</p>
-            <a href="contact.html" class="btn"><i class="fab fa-whatsapp"></i> اذهب لصفحة التواصل</a>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <p>جميع الحقوق محفوظة © <strong>التقني الدومة - آدم عصام</strong> 2026</p>
-            <div class="social-links">
-                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://github.com/adamosam1997-afk" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="contact.html"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <button id="backToTop" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
-
-    <script>
-        const backToTopBtn = document.getElementById("backToTop");
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 300) { backToTopBtn.classList.add("show"); } 
-            else { backToTopBtn.classList.remove("show"); }
-        });
-        backToTopBtn.addEventListener("click", () => { window.scrollTo({ top: 0, behavior: "smooth" }); });
-    </script>
-</body>
-</html>size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--accent-color);
-        }
-
-        .contact-banner p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .contact-banner .btn {
-            background: var(--accent-color);
-            color: var(--primary-color);
-            border-color: var(--accent-color);
-        }
-
-        .contact-banner .btn:hover {
-            background: var(--white);
-            border-color: var(--white);
-            color: var(--primary-color);
-        }
-
-        footer {
-            background: #081f1b;
-            color: #a0aec0;
-            text-align: center;
-            padding: 3rem 2rem 2rem 2rem;
-            border-top: 4px solid var(--accent-color);
-        }
-
-        .footer-content p {
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-        }
-
-        .footer-content strong {
-            color: var(--accent-color);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--white);
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background: var(--accent-color);
-            color: var(--primary-color);
-            transform: translateY(-5px);
-        }
-
-        /* ===============================
-           Responsive Design (التجاوب)
-           =============================== */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 1rem;
-            }
-
-            nav ul {
-                justify-content: center;
-                gap: 0.3rem;
-            }
-
-            nav ul li a {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.9rem;
-            }
-
-            .hero {
-                padding: 4rem 1.5rem;
-                border-radius: 0 0 30px 30px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .cards {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <!-- بداية الترويسة -->
-    <header>
-        <div class="logo">التقني الدومة</div>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">الرئيسية</a></li>
-                <li><a href="games.html">الألعاب</a></li>
-                <li><a href="app.html">التطبيقات</a></li>
-                <li><a href="tutorials.html">الشروحات</a></li>
-                <li><a href="videos.html">الفيديوهات</a></li>
-                <li><a href="contact.html">تواصل</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- القسم الرئيسي (Hero) -->
-    <section class="hero">
-        <h1>مرحباً بك في منصة <span>التقني الدومة</span> 🚀</h1>
-        <p>
-            بوابة المهندس <strong>آدم عصام الدين</strong>، خريج كلية علوم الحاسوب وتقانة المعلومات. نعمل على تطوير البرمجيات وتقديم أحدث التطبيقات والألعاب والشروحات التقنية بأعلى معايير الجودة.
-        </p>
         <div class="hero-badges">
             <div class="hero-badge"><i class="fas fa-mobile-alt" style="color:#0b2b26;"></i> Flutter</div>
             <div class="hero-badge"><i class="fas fa-gamepad" style="color:#0b2b26;"></i> Unity</div>
@@ -335,7 +204,6 @@
     <section class="section">
         <h2 class="section-title">استكشف خدماتنا</h2>
         <div class="cards">
-            
             <div class="card">
                 <div class="card-icon"><i class="fas fa-gamepad"></i></div>
                 <h3>الألعاب</h3>
@@ -356,11 +224,10 @@
                 <p>شروحات مبسطة وعملية في البرمجة، تطوير المواقع، والتطبيقات بلغات وتقنيات مختلفة لتنمية مهاراتك.</p>
                 <a href="tutorials.html" class="btn">دخول الشروحات</a>
             </div>
-
         </div>
     </section>
 
-    <!-- قسم التواصل (Bannder) -->
+    <!-- قسم التواصل -->
     <section class="section">
         <div class="contact-banner">
             <h2>📞 تواصل مع المطور</h2>
@@ -374,15 +241,25 @@
         <div class="footer-content">
             <p>جميع الحقوق محفوظة © <strong>التقني الدومة - آدم عصام</strong> 2026</p>
             <div class="social-links">
-                <a href="https://www.facebook.com/" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://github.com/adamosam1997-afk" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="contact.html" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://github.com/adamosam1997-afk" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="contact.html"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
 
-    <!-- ملف الجافاسكريبت الخاص بك (إن وجد) -->
-    <script src="js/script.js"></script>
+    <!-- زر العودة للأعلى -->
+    <button id="backToTop" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- السكريبت -->
+    <script>
+        const backToTopBtn = document.getElementById("backToTop");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) { backToTopBtn.classList.add("show"); } 
+            else { backToTopBtn.classList.remove("show"); }
+        });
+        backToTopBtn.addEventListener("click", () => { window.scrollTo({ top: 0, behavior: "smooth" }); });
+    </script>
 
     <!-- HilltopAds Popunder Script Code -->
     <script>
