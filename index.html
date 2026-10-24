@@ -3,50 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- HilltopAds Website Verification -->
-    <meta name="619448cdd0fc4fc8cecb7a09284a544e03b56e3b" content="619448cdd0fc4fc8cecb7a09284a544e03b56e3b" />
-
-    <!-- Adsterra Ad Unit (Banner 320x50) -->
-    <script type="text/javascript">
-        atOptions = {
-            'key' : '2995e123421ceabe2b34c9c4c053e319',
-            'format' : 'iframe',
-            'height' : 50,
-            'width' : 320,
-            'params' : {}
-        };
-    </script>
-    <script type="text/javascript" src="https://bauval.org/22/2995e123421ceabe2b34c9c4c053e319"></script>
-
-    <meta name="mitgo-verification" content="d431b217-a45b-47d9-9ea8-ef7ffd56137a" />
-
-    <!-- Google Site Verification -->
-    <meta name="google-site-verification" content="UGyO6N6dV_8WdtwG_cNjXdhStvBVZbiryQsuh62SHiA">
-
-    <meta name="description" content="موقع التقني الدومة - آدم عصام، منصة متخصصة في تطبيقات الأندرويد وألعاب Unity والشروحات البرمجية.">
-    <meta name="keywords" content="Adam Tech, التقني الدومة, برمجة, ألعاب, تطبيقات, Unity, Flutter, تطبيق القرآن">
-    <meta name="author" content="آدم عصام الدين">
-
     <title>التقني الدومة | Adouma Technology</title>
-
+    
     <!-- Google Fonts: Cairo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* ===============================
-           CSS Variables (الهوية البصرية)
-           =============================== */
         :root {
-            --primary-color: #0b2b26; /* الأخضر الداكن */
-            --accent-color: #f9c74f;  /* الذهبي/الأصفر */
+            --primary-color: #0b2b26;
+            --accent-color: #f9c74f;
             --accent-hover: #e0b03b;
-            --bg-light: #f8fafc;      /* خلفية فاتحة جداً */
+            --bg-light: #f8fafc;
             --text-dark: #1e2a3e;
             --text-muted: #64748b;
             --white: #ffffff;
@@ -56,283 +27,173 @@
             --transition: all 0.3s ease;
         }
 
-        /* ===============================
-           Global Styles (الإعدادات العامة)
-           =============================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+            font-family: 'Cairo', sans-serif;
             background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.7;
             overflow-x: hidden;
         }
+        a { text-decoration: none; color: inherit; }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* ===============================
-           Header & Navigation (الترويسة)
-           =============================== */
+        /* --- الهيدر الثابت (Sticky Header) --- */
         header {
-            background: rgba(11, 43, 38, 0.95);
+            background: rgba(11, 43, 38, 0.98);
             backdrop-filter: blur(10px);
-            padding: 1rem 5%;
+            padding: 0.8rem 5%;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow-sm);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
         }
+        .logo { font-size: 1.8rem; font-weight: 800; color: var(--accent-color); text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        nav ul { display: flex; list-style: none; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+        nav ul li a { color: var(--white); font-weight: 600; padding: 0.5rem 1.2rem; border-radius: 50px; transition: var(--transition); font-size: 1rem; }
+        nav ul li a:hover, nav ul li a.active { background: var(--accent-color); color: var(--primary-color); box-shadow: 0 4px 10px rgba(249, 199, 79, 0.3); }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--accent-color);
-            letter-spacing: 1px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        nav ul li a {
-            color: var(--white);
-            font-weight: 600;
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
-            transition: var(--transition);
-            font-size: 1rem;
-        }
-
-        nav ul li a:hover,
-        nav ul li a.active {
-            background: var(--accent-color);
-            color: var(--primary-color);
-            box-shadow: 0 4px 10px rgba(249, 199, 79, 0.3);
-        }
-
-        /* ===============================
-           Hero Section (القسم الرئيسي)
-           =============================== */
+        /* --- Hero Section --- */
         .hero {
             background: linear-gradient(135deg, #e0f2fe 0%, #dcfce7 100%);
             text-align: center;
             padding: 6rem 2rem;
             border-radius: 0 0 50px 50px;
-            margin-bottom: 3rem;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 4rem;
         }
+        .hero h1 { font-size: 2.8rem; color: var(--primary-color); margin-bottom: 1.5rem; font-weight: 800; }
+        .hero h1 span { color: var(--accent-hover); }
+        .hero p { max-width: 800px; margin: 0 auto 2.5rem auto; font-size: 1.2rem; }
+        
+        .hero-badges { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+        .hero-badge { background: var(--white); padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 700; color: var(--primary-color); box-shadow: var(--shadow-sm); display: flex; align-items: center; gap: 0.5rem; }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 60%);
-            transform: rotate(30deg);
-            pointer-events: none;
+        /* --- Cards Section --- */
+        .section { max-width: 1200px; margin: 0 auto 4rem auto; padding: 0 2rem; }
+        .section-title { text-align: center; font-size: 2.2rem; color: var(--primary-color); margin-bottom: 3rem; font-weight: 800; position: relative; display: inline-block; left: 50%; transform: translateX(-50%); }
+        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60%; height: 4px; background: var(--accent-color); border-radius: 2px; }
+
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .card { background: var(--white); border-radius: 24px; padding: 2.5rem 2rem; box-shadow: var(--shadow-md); transition: var(--transition); text-align: center; border: 1px solid rgba(0,0,0,0.03); }
+        .card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
+        .card-icon { font-size: 3rem; color: var(--accent-color); margin-bottom: 1.5rem; background: #fef3c7; width: 80px; height: 80px; display: inline-flex; justify-content: center; align-items: center; border-radius: 50%; transition: var(--transition); }
+        .card:hover .card-icon { background: var(--primary-color); color: var(--accent-color); transform: rotate(10deg); }
+        .card h3 { font-size: 1.5rem; color: var(--primary-color); margin-bottom: 1rem; font-weight: 700; }
+        .card p { color: var(--text-muted); margin-bottom: 2rem; font-size: 1rem; }
+        .btn { display: inline-block; background: var(--primary-color); color: var(--white); padding: 12px 30px; border-radius: 50px; font-weight: 700; transition: var(--transition); border: 2px solid var(--primary-color); }
+        .btn:hover { background: var(--accent-color); border-color: var(--accent-color); color: var(--primary-color); box-shadow: 0 4px 15px rgba(249, 199, 79, 0.4); }
+
+        /* --- Contact Banner --- */
+        .contact-banner { background: var(--primary-color); border-radius: 30px; padding: 4rem 2rem; text-align: center; color: var(--white); box-shadow: var(--shadow-md); }
+        .contact-banner h2 { font-size: 2rem; margin-bottom: 1rem; color: var(--accent-color); }
+        .contact-banner p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; }
+        .contact-banner .btn { background: var(--accent-color); color: var(--primary-color); border-color: var(--accent-color); }
+        .contact-banner .btn:hover { background: var(--white); border-color: var(--white); }
+
+        /* --- Footer & Back to Top --- */
+        footer { background: #081f1b; color: #a0aec0; text-align: center; padding: 3rem 2rem; border-top: 4px solid var(--accent-color); }
+        .footer-content p { margin-bottom: 1.5rem; }
+        .footer-content strong { color: var(--accent-color); }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; }
+        .social-links a { display: inline-flex; justify-content: center; align-items: center; width: 45px; height: 45px; border-radius: 50%; background: rgba(255, 255, 255, 0.05); color: var(--white); transition: var(--transition); }
+        .social-links a:hover { background: var(--accent-color); color: var(--primary-color); transform: translateY(-5px); }
+
+        #backToTop { position: fixed; bottom: 30px; left: 30px; background: var(--accent-color); color: var(--primary-color); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.2rem; cursor: pointer; border: none; box-shadow: var(--shadow-md); opacity: 0; visibility: hidden; transition: var(--transition); z-index: 999; }
+        #backToTop.show { opacity: 1; visibility: visible; }
+        #backToTop:hover { background: var(--primary-color); color: var(--accent-color); transform: translateY(-5px); }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .cards { grid-template-columns: 1fr; }
         }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">التقني الدومة</div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">الرئيسية</a></li>
+                <li><a href="games.html">الألعاب</a></li>
+                <li><a href="app.html">التطبيقات</a></li>
+                <li><a href="tutorials.html">الشروحات</a></li>
+                <li><a href="videos.html">الفيديوهات</a></li>
+                <li><a href="contact.html">تواصل</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        .hero h1 {
-            font-size: 2.8rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-weight: 800;
-            position: relative;
-            z-index: 1;
-        }
+    <section class="hero">
+        <h1>مرحباً بك في منصة <span>التقني الدومة</span> 🚀</h1>
+        <p>بوابة المهندس <strong>آدم عصام الدين</strong>، خريج كلية علوم الحاسوب وتقانة المعلومات. نعمل على تطوير البرمجيات وتقديم أحدث التطبيقات والألعاب والشروحات التقنية بأعلى معايير الجودة.</p>
+        <div class="hero-badges">
+            <div class="hero-badge"><i class="fas fa-mobile-alt" style="color:#0b2b26;"></i> Flutter</div>
+            <div class="hero-badge"><i class="fas fa-gamepad" style="color:#0b2b26;"></i> Unity</div>
+            <div class="hero-badge"><i class="fas fa-code" style="color:#0b2b26;"></i> Web Dev</div>
+        </div>
+    </section>
 
-        .hero h1 span {
-            color: var(--accent-hover);
-        }
+    <section class="section">
+        <h2 class="section-title">استكشف خدماتنا</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-gamepad"></i></div>
+                <h3>الألعاب</h3>
+                <p>استمتع بألعاب حديثة تم تطويرها باستخدام محرك Unity مع تصميم ورسوميات مميزة.</p>
+                <a href="games.html" class="btn">دخول الألعاب</a>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-mobile-screen-button"></i></div>
+                <h3>التطبيقات</h3>
+                <p>اكتشف تطبيقات خدمية مصممة بعناية لمستخدمي أجهزة الأندرويد، تركز على سهولة الاستخدام.</p>
+                <a href="app.html" class="btn">دخول التطبيقات</a>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>الشروحات</h3>
+                <p>شروحات مبسطة وعملية في البرمجة وتطوير المواقع والتطبيقات بلغات مختلفة.</p>
+                <a href="tutorials.html" class="btn">دخول الشروحات</a>
+            </div>
+        </div>
+    </section>
 
-        .hero p {
-            max-width: 800px;
-            margin: 0 auto 2.5rem auto;
-            font-size: 1.2rem;
-            color: var(--text-dark);
-            position: relative;
-            z-index: 1;
-        }
+    <section class="section">
+        <div class="contact-banner">
+            <h2>📞 تواصل مع المطور</h2>
+            <p>لديك فكرة مشروع، استفسار تقني، أو ترغب في التعاون؟ نحن هنا من أجلك.</p>
+            <a href="contact.html" class="btn"><i class="fab fa-whatsapp"></i> اذهب لصفحة التواصل</a>
+        </div>
+    </section>
 
-        .hero-badges {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-        }
+    <footer>
+        <div class="footer-content">
+            <p>جميع الحقوق محفوظة © <strong>التقني الدومة - آدم عصام</strong> 2026</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://github.com/adamosam1997-afk" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="contact.html"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
 
-        .hero-badge {
-            background: var(--white);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            color: var(--primary-color);
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+    <button id="backToTop" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
 
-        /* ===============================
-           Cards Section (البطاقات)
-           =============================== */
-        .section {
-            max-width: 1200px;
-            margin: 0 auto 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            color: var(--primary-color);
-            margin-bottom: 3rem;
-            font-weight: 800;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 4px;
-            background: var(--accent-color);
-            border-radius: 2px;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: 24px;
-            padding: 2.5rem 2rem;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            text-align: center;
-            border: 1px solid rgba(0,0,0,0.03);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--accent-color);
-            transform: scaleX(0);
-            transition: var(--transition);
-            transform-origin: right;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .card-icon {
-            font-size: 3rem;
-            color: var(--accent-color);
-            margin-bottom: 1.5rem;
-            background: #fef3c7;
-            width: 80px;
-            height: 80px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            transition: var(--transition);
-        }
-
-        .card:hover .card-icon {
-            background: var(--primary-color);
-            color: var(--accent-color);
-            transform: rotate(10deg);
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            font-size: 1rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 700;
-            transition: var(--transition);
-            border: 2px solid var(--primary-color);
-        }
-
-        .btn:hover {
-            background: var(--accent-color);
-            border-color: var(--accent-color);
-            color: var(--primary-color);
-            box-shadow: 0 4px 15px rgba(249, 199, 79, 0.4);
-        }
-
-        /* ===============================
-           Contact & Footer (التواصل والفوتر)
-           =============================== */
-        .contact-banner {
-            background: var(--primary-color);
-            border-radius: 30px;
-            padding: 4rem 2rem;
-            text-align: center;
-            color: var(--white);
-            box-shadow: var(--shadow-md);
-        }
-
-        .contact-banner h2 {
-            font-size: 2rem;
+    <script>
+        const backToTopBtn = document.getElementById("backToTop");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) { backToTopBtn.classList.add("show"); } 
+            else { backToTopBtn.classList.remove("show"); }
+        });
+        backToTopBtn.addEventListener("click", () => { window.scrollTo({ top: 0, behavior: "smooth" }); });
+    </script>
+</body>
+</html>size: 2rem;
             margin-bottom: 1rem;
             color: var(--accent-color);
         }
