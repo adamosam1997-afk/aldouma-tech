@@ -4,173 +4,472 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الشروحات - التقني الدومة | أهمية البرمجة</title>
-    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        /* تحسينات إضافية للصفحة */
-        .section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+        /* ===============================
+           إعدادات عامة
+           =============================== */
+        :root {
+            --primary-color: #0b2b26;
+            --accent-color: #f9c74f;
+            --bg-light: #f8fafc;
+            --text-dark: #1e2a3e;
+            --text-muted: #475569;
+            --white: #ffffff;
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 40px -5px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
         }
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            /* اللون الجديد: أحمر فاتح وجذاب */
-            color: #e63946;
-            margin-bottom: 2rem;
-            letter-spacing: -0.5px;
-            text-shadow: 0 1px 1px rgba(0,0,0,0.05);
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
         }
-        .explanation-box {
-            background: #f9f9f9;
-            border-right: 5px solid #f9c74f;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        
+        html { 
+            scroll-behavior: smooth; 
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
             line-height: 1.8;
-            font-size: 1.1rem;
-            color: #333;
-        }
-        .explanation-box h3 {
-            color: #0b2b26;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        .explanation-box p {
-            margin-bottom: 1rem;
-        }
-        .highlight {
-            color: #f9c74f;
-            font-weight: bold;
-        }
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background: #0b2b26;
-            color: white;
-            margin-top: 2rem;
-        }
-        nav ul {
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
-            list-style: none;
-            gap: 1.5rem;
-            background: #1e3a3a;
-            padding: 0.8rem;
-            margin: 0;
+            flex-direction: column;
+            overflow-x: hidden;
         }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.2s ease;
+        
+        a { 
+            text-decoration: none; 
+            color: inherit; 
         }
-        nav ul li a:hover {
-            color: #f9c74f;
-        }
-        nav ul li a.active {
-            color: #f9c74f;
-        }
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #f9c74f;
-            background: #0b2b26;
-            display: inline-block;
-            padding: 0.5rem 2rem;
-            border-radius: 40px;
-        }
+
+        /* ===============================
+           الهيدر الثابت (مطابق للصورة)
+           =============================== */
         header {
             background: #0b2b26;
-            text-align: center;
-            padding: 1rem 0 0 0;
+            padding: 15px 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px solid rgba(249, 199, 79, 0.2);
         }
-        /* جعل التصميم متجاوب */
-        @media (max-width: 768px) {
-            .section {
-                padding: 1rem;
-            }
-            .section-title {
-                font-size: 1.6rem;
-            }
-            .explanation-box {
-                padding: 1.2rem;
-            }
+        
+        .logo { 
+            font-size: 1.8rem; 
+            font-weight: 800; 
+            color: var(--accent-color); 
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3); 
+        }
+        
+        nav {
+            width: 100%;
+        }
+
+        nav ul { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            align-items: center;
+            list-style: none; 
+            gap: 8px; 
+        }
+        
+        nav ul li a { 
+            color: var(--white); 
+            font-weight: 700; 
+            padding: 8px 18px; 
+            border-radius: 50px; 
+            transition: var(--transition); 
+            font-size: 1rem; 
+            display: inline-block;
+        }
+        
+        nav ul li a:hover, 
+        nav ul li a.active { 
+            background: var(--accent-color); 
+            color: var(--primary-color); 
+            box-shadow: 0 4px 10px rgba(249, 199, 79, 0.3); 
+        }
+
+        /* ===============================
+           المحتوى الرئيسي (المقال)
+           =============================== */
+        main { 
+            flex: 1; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 4rem 2rem; 
+            width: 100%;
+        }
+        
+        .page-title { 
+            text-align: center; 
+            font-size: 2.5rem; 
+            color: var(--primary-color); 
+            margin-bottom: 3rem; 
+            font-weight: 800; 
+            position: relative; 
+            display: inline-block; 
+            left: 50%; 
+            transform: translateX(-50%);
+            padding-bottom: 10px;
+        }
+        
+        .page-title::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 80px; 
+            height: 4px; 
+            background: var(--accent-color); 
+            border-radius: 2px; 
+        }
+
+        /* بطاقة الشروحات */
+        .tutorial-container {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .tutorial-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .tutorial-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .tutorial-section h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+        }
+
+        .tutorial-section h3 i {
+            color: var(--accent-color);
+            background: #fef3c7;
+            width: 45px;
+            height: 45px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-size: 1.2rem;
+        }
+
+        .tutorial-section p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .tutorial-section ul {
+            list-style: none;
+            padding-right: 1rem;
+        }
+
+        .tutorial-section ul li {
+            position: relative;
+            padding-right: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .tutorial-section ul li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 0;
+            top: 2px;
+            color: var(--accent-hover);
+            font-size: 0.9rem;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+            font-weight: 700;
+            background: rgba(249, 199, 79, 0.2);
+            padding: 0 5px;
+            border-radius: 4px;
+        }
+
+        /* خاتمة المقال */
+        .conclusion-banner {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 3rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-md);
+            border-right: 5px solid var(--accent-color);
+        }
+
+        .conclusion-banner i {
+            color: var(--accent-color);
+            margin-left: 8px;
+        }
+
+        /* ===============================
+           الفوتر وزر العودة للأعلى
+           =============================== */
+        footer { 
+            background: #081f1b; 
+            color: #a0aec0; 
+            text-align: center; 
+            padding: 2.5rem 2rem; 
+            border-top: 4px solid var(--accent-color); 
+            margin-top: auto; 
+        }
+        
+        .footer-content p { 
+            margin-bottom: 1.5rem; 
+        }
+        
+        .footer-content strong { 
+            color: var(--accent-color); 
+        }
+        
+        .social-links { 
+            display: flex; 
+            justify-content: center; 
+            gap: 1.5rem; 
+        }
+        
+        .social-links a { 
+            display: inline-flex; 
+            justify-content: center; 
+            align-items: center; 
+            width: 45px; 
+            height: 45px; 
+            border-radius: 50%; 
+            background: rgba(255, 255, 255, 0.05); 
+            color: var(--white); 
+            transition: var(--transition); 
+        }
+        
+        .social-links a:hover { 
+            background: var(--accent-color); 
+            color: var(--primary-color); 
+            transform: translateY(-5px); 
+        }
+
+        #backToTop { 
+            position: fixed; 
+            bottom: 30px; 
+            left: 30px; 
+            background: var(--accent-color); 
+            color: var(--primary-color); 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            font-size: 1.2rem; 
+            cursor: pointer; 
+            border: none; 
+            box-shadow: var(--shadow-md); 
+            opacity: 0; 
+            visibility: hidden; 
+            transition: var(--transition); 
+            z-index: 999; 
+        }
+        
+        #backToTop.show { 
+            opacity: 1; 
+            visibility: visible; 
+        }
+        
+        #backToTop:hover { 
+            background: var(--white); 
+            transform: translateY(-5px); 
+        }
+
+        /* ===============================
+           التجاوب مع الهواتف
+           =============================== */
+        @media (max-width: 600px) {
             nav ul {
-                gap: 0.8rem;
-                flex-wrap: wrap;
+                gap: 5px;
+            }
+            nav ul li a {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            main {
+                padding: 2rem 1rem;
+            }
+            .page-title { 
+                font-size: 1.8rem; 
+            }
+            .tutorial-container {
+                padding: 1.5rem;
+            }
+            .tutorial-section h3 {
+                font-size: 1.3rem;
+            }
+            .tutorial-section p, .tutorial-section ul li {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">التقني الدومة</div>
-    <nav>
-        <ul>
-            <li><a href="index.html">الرئيسية</a></li>
-            <li><a href="games.html">الألعاب</a></li>
-            <li><a href="app.html">التطبيقات</a></li>
-            <li><a href="tutorials.html" class="active">الشروحات</a></li>
-             <li><a href="videos.html">الفيديوهات</a></li>
+    <!-- الهيدر -->
+    <header>
+        <div class="logo">التقني الدومة</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="games.html">الألعاب</a></li>
+                <li><a href="app.html">التطبيقات</a></li>
+                <li><a href="tutorials.html" class="active">الشروحات</a></li>
+                <li><a href="videos.html">الفيديوهات</a></li>
+                <li><a href="contact.html">تواصل</a></li>
+            </ul>
+        </nav>
+    </header>
 
-            <li><a href="contact.html">تواصل</a></li>
-        </ul>
-    </nav>
-</header>
+    <!-- المحتوى الرئيسي -->
+    <main>
+        <h1 class="page-title">💻 أهمية البرمجة واستخداماتها</h1>
+        
+        <div class="tutorial-container">
+            
+            <!-- القسم الأول -->
+            <div class="tutorial-section">
+                <h3><i class="fas fa-code"></i> ما هي البرمجة؟</h3>
+                <p>
+                    البرمجة هي لغة العصر الحديث. إنها عملية كتابة تعليمات (أكواد) يفهمها الحاسوب ليقوم بمهام محددة. 
+                    من خلال البرمجة، نستطيع أن نأمر الأجهزة والمواقع والتطبيقات بأن تعمل بالطريقة التي نريدها بدقة وسرعة فائقة.
+                </p>
+            </div>
 
-<section class="section">
-    <h2 class="section-title">💻 أهمية البرمجة واستخداماتها</h2>
-    <div class="explanation-box">
-        <h3>🚀 ما هي البرمجة؟</h3>
-        <p>
-            البرمجة هي لغة العصر الحديث. إنها عملية كتابة تعليمات (أكواد) يفهمها الحاسوب ليقوم بمهام محددة. 
-            من خلال البرمجة، نستطيع أن نأمر الأجهزة والمواقع والتطبيقات بأن تعمل بالطريقة التي نريدها.
-        </p>
-        <h3>🌟 لماذا تعلّم البرمجة مهم لكل سوداني؟</h3>
-        <p>
-            في عصر الرقمنة، <span class="highlight">البرمجة تفتح لك أبواب الفرص</span>: وظائف مرتفعة الدخل، مشاريع حرة (فريلانس)، 
-            وقدرة على إنشاء تطبيقات ومواقع تساعد مجتمعك. <strong>التقني الدومة</strong> يؤمن بأن تعلم البرمجة هو 
-            أساس التطور التقني في السودان.
-        </p>
-        <h3>📱 استخدامات البرمجة في حياتنا اليومية</h3>
-        <p>
-            - <strong>تطبيقات الجوال:</strong> كل تطبيق تفتحه في هاتفك (واتساب، فيسبوك، الخ) صُنع بواسطة البرمجة.<br>
-            - <strong>مواقع الويب:</strong> المتاجر الإلكترونية، منصات التعليم، وحتى موقعنا هذا يعتمد على البرمجة.<br>
-            - <strong>الذكاء الاصطناعي:</strong> المساعدات الصوتية (مثل سيري ومساعد جوجل)، والتعرف على الوجه، والسيارات ذاتية القيادة.<br>
-            - <strong>الأمن السيبراني:</strong> حماية البيانات والمعلومات من الاختراقات.<br>
-            - <strong>الألعاب:</strong> كل لعبة إلكترونية ممتعة هي نتاج برمجيين مبدعين.
-        </p>
-        <h3>🛠️ كيف تبدأ طريقك في البرمجة؟</h3>
-        <p>
-            ابدأ بإحدى اللغات السهلة مثل <strong>Python</strong> أو <strong>JavaScript</strong>. استخدم المصادر المجانية على الإنترنت، 
-            وتدرب يوميًا. <strong>التقني الدومة</strong> ينصحك بالانضمام إلى مجتمعات المبرمجين السودانية للحصول على الدعم وتبادل الخبرات. 
-            تذكر: المبرمج الناجح لا يتوقف عن التعلم أبدًا.
-        </p>
-        <p style="margin-top: 1.5rem; font-weight: bold; text-align: center;">
-            ✨ البرمجة مستقبل السودان، والتقني الدومة هنا ليساعدك على بناء هذا المستقبل ✨
-        </p>
-    </div>
-</section>
+            <!-- القسم الثاني -->
+            <div class="tutorial-section">
+                <h3><i class="fas fa-rocket"></i> لماذا تعلّم البرمجة مهم لكل سوداني؟</h3>
+                <p>
+                    في عصر الرقمنة، <span class="highlight">البرمجة تفتح لك أبواب الفرص</span>: وظائف مرتفعة الدخل، مشاريع حرة (فريلانس)، 
+                    وقدرة على إنشاء تطبيقات ومواقع تساعد مجتمعك. <strong>التقني الدومة</strong> يؤمن بأن تعلم البرمجة هو 
+                    أساس التطور التقني في السودان.
+                </p>
+            </div>
 
-<footer>
-    جميع الحقوق محفوظة © التقني الدومة
-</footer>
+            <!-- القسم الثالث -->
+            <div class="tutorial-section">
+                <h3><i class="fas fa-mobile-alt"></i> استخدامات البرمجة في حياتنا اليومية</h3>
+                <ul>
+                    <li><strong>تطبيقات الجوال:</strong> كل تطبيق تفتحه في هاتفك (واتساب، فيسبوك، الخ) صُنع بواسطة البرمجة.</li>
+                    <li><strong>مواقع الويب:</strong> المتاجر الإلكترونية، منصات التعليم، وحتى موقعنا هذا يعتمد على البرمجة.</li>
+                    <li><strong>الذكاء الاصطناعي:</strong> المساعدات الصوتية (مثل سيري ومساعد جوجل)، والتعرف على الوجه، والسيارات ذاتية القيادة.</li>
+                    <li><strong>الأمن السيبراني:</strong> حماية البيانات والمعلومات من الاختراقات.</li>
+                    <li><strong>الألعاب:</strong> كل لعبة إلكترونية ممتعة هي نتاج برمجيين مبدعين.</li>
+                </ul>
+            </div>
 
-<!-- HilltopAds Popunder Script Code -->
-<script>
-(function(rmnz){
-var d = document,
-    s = d.createElement('script'),
-    l = d.currentScript || d.scripts[d.scripts.length - 1];
-s.settings = rmnz || {};
-s.src = "\/\/vapid-size.com\/crD.9l6vb\/2Z5nl\/SMWtQ-9lNUziUj0BNXTRcPwMORSi0\/3kN\/TBQy1oNgzOEfzw";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})
-</script>
+            <!-- القسم الرابع -->
+            <div class="tutorial-section">
+                <h3><i class="fas fa-road"></i> كيف تبدأ طريقك في البرمجة؟</h3>
+                <p>
+                    ابدأ بإحدى اللغات السهلة مثل <strong>Python</strong> أو <strong>JavaScript</strong>. استخدم المصادر المجانية على الإنترنت، 
+                    وتدرب يوميًا. <strong>التقني الدومة</strong> ينصحك بالانضمام إلى مجتمعات المبرمجين السودانية للحصول على الدعم وتبادل الخبرات. 
+                    تذكر: المبرمج الناجح لا يتوقف عن التعلم أبدًا.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- الخاتمة -->
+        <div class="conclusion-banner">
+            <i class="fas fa-star"></i> البرمجة مستقبل السودان، والتقني الدومة هنا ليساعدك على بناء هذا المستقبل <i class="fas fa-star"></i>
+        </div>
+
+    </main>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-content">
+            <p>جميع الحقوق محفوظة © <strong>التقني الدومة - آدم عصام</strong> 2026</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://github.com/adamosam1997-afk" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="contact.html"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- زر العودة للأعلى -->
+    <button id="backToTop" aria-label="العودة للأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- السكريبت -->
+    <script>
+        const backToTopBtn = document.getElementById("backToTop");
+        
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        });
+
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
+
+    <!-- HilltopAds Popunder Script Code -->
+    <script>
+    (function(rmnz){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.currentScript || d.scripts[d.scripts.length - 1];
+    s.settings = rmnz || {};
+    s.src = "\/\/vapid-size.com\/crD.9l6vb\/2Z5nl\/SMWtQ-9lNUziUj0BNXTRcPwMORSi0\/3kN\/TBQy1oNgzOEfzw";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
+    </script>
 
 </body>
 </html>
