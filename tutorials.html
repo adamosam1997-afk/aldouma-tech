@@ -6,29 +6,16 @@
     <title>الشروحات - التقني الدومة | أهمية البرمجة</title>
 
     <!-- ========================================== -->
-    <!-- أكواد التحقق والإعلانات (Head) -->
+    <!-- أكواد التحقق (Head) -->
     <!-- ========================================== -->
     
     <!-- HilltopAds Website Verification -->
     <meta name="619448cdd0fc4fc8cecb7a09284a544e03b56e3b" content="619448cdd0fc4fc8cecb7a09284a544e03b56e3b" />
 
-    <!-- Adsterra Ad Unit (Banner 320x50) -->
-    <script type="text/javascript">
-        atOptions = {
-            'key' : '2995e123421ceabe2b34c9c4c053e319',
-            'format' : 'iframe',
-            'height' : 50,
-            'width' : 320,
-            'params' : {}
-        };
-    </script>
-    <script type="text/javascript" src="https://bauval.org/22/2995e123421ceabe2b34c9c4c053e319"></script>
-
     <meta name="mitgo-verification" content="d431b217-a45b-47d9-9ea8-ef7ffd56137a" />
 
     <!-- Google Site Verification -->
     <meta name="google-site-verification" content="UGyO6N6dV_8WdtwG_cNjXdhStvBVZbiryQsuh62SHiA">
-
 
     <!-- ========================================== -->
     <!-- الخطوط والأيقونات -->
@@ -153,7 +140,7 @@
             text-align: center; 
             font-size: 2.5rem; 
             color: var(--primary-color); 
-            margin-bottom: 2rem; 
+            margin-bottom: 2.5rem; 
             font-weight: 800; 
             position: relative; 
             display: inline-block; 
@@ -172,16 +159,6 @@
             height: 4px; 
             background: var(--accent-color); 
             border-radius: 2px; 
-        }
-
-        /* حاوية إعلان البانر */
-        .ad-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto 2.5rem auto;
-            min-height: 50px; /* لضمان عدم اهتزاز التصميم قبل تحميل الإعلان */
-            overflow: hidden;
         }
 
         /* بطاقة الشروحات */
@@ -259,6 +236,37 @@
             background: rgba(249, 199, 79, 0.2);
             padding: 0 5px;
             border-radius: 4px;
+        }
+
+        /* تنسيق زر الدايركت لينك */
+        .direct-link-wrapper {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        .direct-link-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 20px rgba(243, 156, 18, 0.4);
+            transition: var(--transition);
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        .direct-link-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(243, 156, 18, 0.6);
         }
 
         /* خاتمة المقال */
@@ -382,6 +390,10 @@
             .tutorial-section p, .tutorial-section ul li {
                 font-size: 1rem;
             }
+            .direct-link-btn {
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
         }
     </style>
 </head>
@@ -405,11 +417,6 @@
     <!-- المحتوى الرئيسي -->
     <main>
         <h1 class="page-title">💻 أهمية البرمجة واستخداماتها</h1>
-        
-        <!-- حاوية إعلان البانر (سيتم حقن إعلان Adsterra هنا تلقائياً) -->
-        <div class="ad-container">
-            <!-- الكود تم استدعاؤه في الـ Head، هذا المكان مخصص لظهور البانر -->
-        </div>
 
         <div class="tutorial-container">
             
@@ -452,6 +459,16 @@
                     وتدرب يوميًا. <strong>التقني الدومة</strong> ينصحك بالانضمام إلى مجتمعات المبرمجين السودانية للحصول على الدعم وتبادل الخبرات. 
                     تذكر: المبرمج الناجح لا يتوقف عن التعلم أبدًا.
                 </p>
+            </div>
+
+            <!-- 🟢 زر الدايركت لينك (Direct Link) -->
+            <div class="direct-link-wrapper">
+                <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 15px;">هل تبحث عن المزيد من الفوائد؟</p>
+                <a href="https://plump-plastic.com/b/3CVl0xP.3/pgv/bFmtV/JYZdDG0X3qNmThQ/1nNEzyA/5cLnTPcL1/N/DOUO3pM-T/MN" 
+                   target="_blank" 
+                   class="direct-link-btn">
+                    <i class="fas fa-gift"></i> احصل على مكافأة إضافية 🎁
+                </a>
             </div>
 
         </div>
@@ -500,14 +517,14 @@
         });
     </script>
 
-    <!-- HilltopAds Popunder Script Code -->
+    <!-- 🟢 كود HilltopAds Popunder الجديد (pop1) -->
     <script>
-    (function(rmnz){
+    (function(jqxxv){
     var d = document,
         s = d.createElement('script'),
         l = d.currentScript || d.scripts[d.scripts.length - 1];
-    s.settings = rmnz || {};
-    s.src = "\/\/vapid-size.com\/crD.9l6vb\/2Z5nl\/SMWtQ-9lNUziUj0BNXTRcPwMORSi0\/3kN\/TBQy1oNgzOEfzw";
+    s.settings = jqxxv || {};
+    s.src = "\/\/vapid-size.com\/crDs9.6WbF2v5Gl\/S\/WBQO9wNAzOU\/0XNuTqcFw-O_SM0m3cNtToQj1DNtzHEAzA";
     s.async = true;
     s.referrerPolicy = 'no-referrer-when-downgrade';
     l.parentNode.insertBefore(s, l);
