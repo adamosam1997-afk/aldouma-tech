@@ -4,166 +4,239 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>الألعاب - التقني الدومة | لعبة الأمثال السودانية</title>
+    
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
     <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
+        /* ===============================
+           CSS Variables (الهوية البصرية)
+           =============================== */
+        :root {
+            --primary-color: #0b2b26; /* الأخضر الداكن */
+            --accent-color: #f9c74f;  /* الذهبي/الأصفر */
+            --accent-hover: #e0b03b;
+            --bg-dark: #0f1a24;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 25px 40px -12px rgba(0, 0, 0, 0.6);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ===============================
+           Global Styles (الإعدادات العامة)
+           =============================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', 'Tahoma', 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #1a2a3a 0%, #0f1a24 100%);
-            color: #eee;
-            line-height: 1.5;
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* Header */
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #1a2a3a 0%, #0f1a24 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===============================
+           Header & Navigation (الترويسة)
+           =============================== */
         header {
-            background: #0b2b26;
-            padding: 1rem 2rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            background: rgba(11, 43, 38, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 5%;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(249, 199, 79, 0.2);
         }
 
         .logo {
             font-size: 1.8rem;
-            font-weight: bold;
-            color: #f9c74f;
-            text-align: center;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Navigation */
-        nav {
-            background: #1e3a3a;
-            padding: 0.8rem;
-            border-radius: 0 0 20px 20px;
-            margin-top: 0.5rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            z-index: 1001;
         }
 
         nav ul {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
             list-style: none;
-            gap: 1.2rem;
+            gap: 0.5rem;
+            align-items: center;
         }
 
         nav ul li a {
-            color: #f1f1f1;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 40px;
-            transition: all 0.3s ease;
+            color: var(--text-light);
+            font-weight: 600;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            transition: var(--transition);
             font-size: 1rem;
         }
 
         nav ul li a:hover,
         nav ul li a.active {
-            background: #f9c74f;
-            color: #1e3a3a;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            background: var(--accent-color);
+            color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(249, 199, 79, 0.3);
         }
 
-        /* Section */
-        .section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 2rem 4rem;
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 1001;
+            transition: var(--transition);
+        }
+
+        /* ===============================
+           Main Content (المحتوى الرئيسي)
+           =============================== */
+        main {
+            flex: 1;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .section-title {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #f9c74f;
-            border-bottom: 3px solid #f9c74f;
+            margin-bottom: 3rem;
+            color: var(--accent-color);
+            font-weight: 800;
+            position: relative;
             display: inline-block;
             padding-bottom: 0.5rem;
-            width: auto;
-            margin-left: auto;
-            margin-right: auto;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
-        .cards {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
         }
 
-        /* البطاقة الرئيسية */
-        .card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(8px);
-            border-radius: 48px;
+        /* ===============================
+           Game Card (بطاقة اللعبة)
+           =============================== */
+        .game-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.5);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
             max-width: 600px;
             width: 100%;
             text-align: center;
-            border: 1px solid rgba(249, 199, 79, 0.4);
+            border: 1px solid rgba(249, 199, 79, 0.3);
+            animation: slideUp 0.8s ease-out forwards;
+            opacity: 0;
         }
 
-        .card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 35px 50px -15px rgba(0,0,0,0.6);
-            border-color: #f9c74f;
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 35px 50px -15px rgba(0,0,0,0.7);
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.08);
         }
 
-        /* صورة البطاقة */
-        .card-img {
-            background: linear-gradient(145deg, #f4d03f, #e6b800);
-            padding: 2rem;
+        /* حاوية الأيقونة */
+        .card-header-icon {
+            background: radial-gradient(circle, rgba(249,199,79,0.2) 0%, transparent 70%);
+            padding: 3rem 2rem 2rem;
+            position: relative;
         }
 
         .game-icon {
-            width: 160px;
-            height: 160px;
+            width: 180px;
+            height: 180px;
             object-fit: contain;
-            filter: drop-shadow(0 12px 18px rgba(0,0,0,0.3));
-            transition: transform 0.3s;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4));
+            transition: var(--transition);
+            border-radius: 30px; /* في حال كانت الصورة مربعة */
         }
 
-        .card:hover .game-icon {
-            transform: scale(1.05);
+        .game-card:hover .game-icon {
+            transform: scale(1.08) rotate(2deg);
         }
 
         /* محتوى البطاقة */
         .card-content {
-            padding: 2rem 2rem 2.5rem;
+            padding: 1rem 2.5rem 2.5rem;
         }
 
         .card-content h3 {
             font-size: 2.2rem;
-            color: #f9c74f;
-            margin-bottom: 0.75rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-weight: 800;
         }
 
         .version-badge {
-            background: #2c4a3e;
+            background: rgba(44, 74, 62, 0.8);
             color: #ffd966;
-            padding: 0.3rem 1.2rem;
-            border-radius: 40px;
-            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             margin-bottom: 1.5rem;
-            font-weight: bold;
-            font-size: 0.9rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 217, 102, 0.2);
         }
 
         .card-content p {
-            color: #e0e0e0;
+            color: var(--text-muted);
             line-height: 1.8;
-            margin-bottom: 2rem;
-            font-size: 1.05rem;
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .card-content strong {
+            color: var(--white);
         }
 
         /* زر التحميل */
@@ -171,106 +244,249 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            background: linear-gradient(95deg, #f9c74f, #e9b12e);
-            color: #1e3a3a;
-            padding: 14px 32px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: bold;
+            gap: 15px;
+            background: linear-gradient(135deg, #f9c74f, #e0b03b);
+            color: var(--primary-color);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 800;
             font-size: 1.2rem;
-            transition: all 0.25s;
-            box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(249, 199, 79, 0.3);
             width: 100%;
-            max-width: 320px;
+            max-width: 350px;
             margin: 0 auto;
+            border: 2px solid transparent;
         }
 
         .btn-download i {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
         }
 
         .btn-download:hover {
-            background: linear-gradient(95deg, #e9b12e, #d49b1a);
-            transform: scale(1.02);
-            box-shadow: 0 12px 22px rgba(0,0,0,0.4);
-            letter-spacing: 0.5px;
+            background: var(--white);
+            color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2);
+            border-color: var(--accent-color);
         }
 
-        /* Footer */
+        /* ===============================
+           Footer (الفوتر)
+           =============================== */
         footer {
-            background: #0b2b26;
-            color: #bbb;
+            background: #081f1b;
+            color: #a0aec0;
             text-align: center;
-            padding: 1.5rem;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            border-top: 2px solid #f9c74f;
+            padding: 2rem;
+            border-top: 3px solid var(--accent-color);
+            margin-top: auto;
         }
 
-        /* استجابة */
-        @media (max-width: 700px) {
-            .section {
+        .footer-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .footer-content strong {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(249, 199, 79, 0.3);
+        }
+
+        /* زر العودة للأعلى */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--accent-color);
+            color: var(--primary-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: none;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #backToTop:hover {
+            background: var(--white);
+            transform: translateY(-5px);
+        }
+
+        /* ===============================
+           Animations (الحركات)
+           =============================== */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===============================
+           Responsive Design (التجاوب)
+           =============================== */
+        @media (max-width: 900px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--primary-color);
+                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+                transition: 0.4s ease-in-out;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1.5rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            nav ul li {
+                width: 100%;
+            }
+
+            nav ul li a {
+                display: block;
                 padding: 1rem;
+                font-size: 1.2rem;
+                border-radius: 0;
             }
+
+            main {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .card-content {
+                padding: 1rem 1.5rem 2rem;
+            }
+
             .card-content h3 {
-                font-size: 1.7rem;
+                font-size: 1.8rem;
             }
+
+            .game-icon {
+                width: 140px;
+                height: 140px;
+            }
+
             .btn-download {
                 font-size: 1rem;
-                padding: 12px 20px;
-            }
-            .game-icon {
-                width: 110px;
-                height: 110px;
-            }
-            nav ul {
-                gap: 0.5rem;
-            }
-            nav ul li a {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.85rem;
+                padding: 14px 20px;
             }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">التقني الدومة</div>
-    <nav>
-        <ul>
-            <li><a href="index.html">الرئيسية</a></li>
-            <li><a href="games.html" class="active">الألعاب</a></li>
-            <li><a href="app.html">التطبيقات</a></li>
-            <li><a href="tutorials.html">الشروحات</a></li>
-           <li><a href="videos.html">الفيديوهات</a></li>
-           <li><a href="contact.html">تواصل</a></li>
-        </ul>
-    </nav>
-</header>
+    <!-- بداية الترويسة -->
+    <header>
+        <div class="logo">التقني الدومة</div>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">
+            <i class="fas fa-bars"></i>
+        </button>
 
-<section class="section">
-    <h2 class="section-title">🎲 لعبة الحكمة السودانية</h2>
-    <div class="cards">
-        <!-- بطاقة الأمثال السودانية -->
-        <div class="card">
-            <div class="card-img">
+        <nav id="navbar">
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="games.html" class="active">الألعاب</a></li>
+                <li><a href="app.html">التطبيقات</a></li>
+                <li><a href="tutorials.html">الشروحات</a></li>
+                <li><a href="videos.html">الفيديوهات</a></li>
+                <li><a href="contact.html">تواصل</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main>
+        <h2 class="section-title">🎲 لعبة الحكمة السودانية</h2>
+        
+        <!-- بطاقة اللعبة -->
+        <div class="game-card">
+            <div class="card-header-icon">
                 <img src="assets/images/app_icon.png" 
                      alt="أيقونة الأمثال السودانية" 
                      class="game-icon"
-                     onerror="this.src='https://via.placeholder.com/160?text=Amthal+Sudan'">
+                     onerror="this.src='https://via.placeholder.com/180?text=Amthal+Sudan'">
             </div>
+            
             <div class="card-content">
                 <h3>📜 أمثال السودان</h3>
+                
                 <div class="version-badge">
                     <i class="fas fa-trophy"></i> لعبة ثقافية · الإصدار 1.0
                 </div>
+                
                 <p>
-                    <strong>يا سوداني، ده لعبتك!</strong> اختبر معرفتك بالأمثال السودانية، تعلم حكم الأجداد بطريقة تفاعلية ممتعة. 
-                    يحتوي على 300 مثل وحكمة، واجهة عصرية، وتحديات يومية. 
-                    من <strong>التقني الدومة</strong> لأهل السودان في كل مكان.
+                    <strong>يا سوداني، ده لعبتك!</strong> اختبر معرفتك بالأمثال السودانية، وتعلم حكم الأجداد بطريقة تفاعلية ممتعة. 
+                    تحتوي اللعبة على 300 مثل وحكمة، واجهة عصرية، وتحديات يومية. 
+                    صُنعت بكل حب من <strong>التقني الدومة</strong> لأهل السودان في كل مكان.
                 </p>
+                
                 <a href="https://github.com/adamosam1997-afk/aldouma-tech/releases/download/v1.0-sudan-amthal/default.apk" 
                    class="btn-download" 
                    target="_blank" 
@@ -281,26 +497,80 @@
             </div>
         </div>
         <!-- نهاية البطاقة -->
-    </div>
-</section>
+    </main>
 
-<footer>
-    جميع الحقوق محفوظة © التقني الدومة
-</footer>
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-content">
+            <p>جميع الحقوق محفوظة © <strong>التقني الدومة - آدم عصام</strong> 2026</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://github.com/adamosam1997-afk" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="contact.html" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
 
-<!-- HilltopAds Popunder Script Code -->
-<script>
-(function(rmnz){
-var d = document,
-    s = d.createElement('script'),
-    l = d.currentScript || d.scripts[d.scripts.length - 1];
-s.settings = rmnz || {};
-s.src = "\/\/vapid-size.com\/crD.9l6vb\/2Z5nl\/SMWtQ-9lNUziUj0BNXTRcPwMORSi0\/3kN\/TBQy1oNgzOEfzw";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})
-</script>
+    <!-- زر العودة للأعلى -->
+    <button id="backToTop" aria-label="العودة للأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- السكريبت الخاص بالتصميم -->
+    <script>
+        // 1. قائمة الهواتف (Hamburger Menu)
+        const menuToggle = document.getElementById('menuToggle');
+        const navbar = document.getElementById('navbar');
+
+        menuToggle.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navbar.classList.contains('active')) {
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
+        });
+
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navbar.classList.remove('active');
+                menuToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+            });
+        });
+
+        // 2. زر العودة للأعلى
+        const backToTopBtn = document.getElementById("backToTop");
+        
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        });
+
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
+
+    <!-- HilltopAds Popunder Script Code -->
+    <script>
+    (function(rmnz){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.currentScript || d.scripts[d.scripts.length - 1];
+    s.settings = rmnz || {};
+    s.src = "\/\/vapid-size.com\/crD.9l6vb\/2Z5nl\/SMWtQ-9lNUziUj0BNXTRcPwMORSi0\/3kN\/TBQy1oNgzOEfzw";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
+    </script>
 
 </body>
 </html>
