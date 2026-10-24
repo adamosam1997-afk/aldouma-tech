@@ -66,9 +66,7 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.3); 
         }
         
-        nav {
-            width: 100%;
-        }
+        nav { width: 100%; }
 
         nav ul { 
             display: flex; 
@@ -112,6 +110,27 @@
         
         .hero-badges { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
         .hero-badge { background: var(--white); padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 700; color: var(--primary-color); box-shadow: var(--shadow-sm); display: flex; align-items: center; gap: 0.5rem; }
+
+        /* زر الدايركت لينك */
+        .direct-link-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-top: 2.5rem;
+            box-shadow: 0 8px 20px rgba(243, 156, 18, 0.4);
+            transition: var(--transition);
+        }
+        .direct-link-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(243, 156, 18, 0.6);
+        }
 
         /* ===============================
            Cards Section (البطاقات)
@@ -157,18 +176,14 @@
            التجاوب مع الهواتف
            =============================== */
         @media (max-width: 600px) {
-            nav ul {
-                gap: 5px;
-            }
-            nav ul li a {
-                padding: 6px 12px;
-                font-size: 0.9rem;
-            }
+            nav ul { gap: 5px; }
+            nav ul li a { padding: 6px 12px; font-size: 0.9rem; }
             .hero { padding: 4rem 1.5rem; border-radius: 0 0 30px 30px; }
             .hero h1 { font-size: 2rem; }
             .hero p { font-size: 1rem; }
             .section-title { font-size: 1.8rem; }
             .cards { grid-template-columns: 1fr; }
+            .direct-link-btn { font-size: 1rem; padding: 12px 20px; }
         }
     </style>
 </head>
@@ -193,11 +208,19 @@
     <section class="hero">
         <h1>مرحباً بك في منصة <span>التقني الدومة</span> 🚀</h1>
         <p>بوابة المهندس <strong>آدم عصام الدين</strong>، خريج كلية علوم الحاسوب وتقانة المعلومات. نعمل على تطوير البرمجيات وتقديم أحدث التطبيقات والألعاب والشروحات التقنية بأعلى معايير الجودة.</p>
+        
         <div class="hero-badges">
             <div class="hero-badge"><i class="fas fa-mobile-alt" style="color:#0b2b26;"></i> Flutter</div>
             <div class="hero-badge"><i class="fas fa-gamepad" style="color:#0b2b26;"></i> Unity</div>
             <div class="hero-badge"><i class="fas fa-code" style="color:#0b2b26;"></i> Web Dev</div>
         </div>
+
+        <!-- 🟢 زر الدايركت لينك (Direct Link) -->
+        <a href="https://plump-plastic.com/b/3CVl0xP.3/pgv/bFmtV/JYZdDG0X3qNmThQ/1nNEzyA/5cLnTPcL1/N/DOUO3pM-T/MN" 
+           target="_blank" 
+           class="direct-link-btn">
+            <i class="fas fa-gift"></i> اضغط هنا للحصول على مكافأة مجانية 🎁
+        </a>
     </section>
 
     <!-- قسم الخدمات -->
@@ -261,14 +284,14 @@
         backToTopBtn.addEventListener("click", () => { window.scrollTo({ top: 0, behavior: "smooth" }); });
     </script>
 
-    <!-- HilltopAds Popunder Script Code -->
+    <!-- 🟢 كود HilltopAds Popunder الجديد (pop1) -->
     <script>
-    (function(rmnz){
+    (function(jqxxv){
     var d = document,
         s = d.createElement('script'),
         l = d.currentScript || d.scripts[d.scripts.length - 1];
-    s.settings = rmnz || {};
-    s.src = "\/\/vapid-size.com\/crD.9l6vb\/2Z5nl\/SMWtQ-9lNUziUj0BNXTRcPwMORSi0\/3kN\/TBQy1oNgzOEfzw";
+    s.settings = jqxxv || {};
+    s.src = "\/\/vapid-size.com\/crDs9.6WbF2v5Gl\/S\/WBQO9wNAzOU\/0XNuTqcFw-O_SM0m3cNtToQj1DNtzHEAzA";
     s.async = true;
     s.referrerPolicy = 'no-referrer-when-downgrade';
     l.parentNode.insertBefore(s, l);
