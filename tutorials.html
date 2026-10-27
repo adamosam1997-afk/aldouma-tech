@@ -152,7 +152,7 @@
         }
 
         .tutorial-item {
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
             overflow: hidden;
@@ -161,8 +161,10 @@
 
         .tutorial-item:hover {
             border-color: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(11, 43, 38, 0.08);
         }
 
+        /* تصميم الزر مع تأثير الموجة */
         .tutorial-title {
             background-color: #f8fafc;
             color: var(--primary-color);
@@ -178,7 +180,26 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+            overflow: hidden; /* ضروري لتأثير الموجة */
             transition: var(--transition);
+        }
+
+        /* تأثير الموجة عند النقر عبر الـ JS */
+        .ripple {
+            position: absolute;
+            background: rgba(249, 199, 79, 0.4);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
         }
 
         .tutorial-title i.icon-left {
@@ -192,6 +213,7 @@
             border-radius: 50%;
             font-size: 0.9rem;
             margin-left: 12px;
+            transition: var(--transition);
         }
 
         .tutorial-title span {
@@ -217,6 +239,7 @@
         .tutorial-title.active i.icon-left {
             background: rgba(249, 199, 79, 0.2);
             color: var(--accent-color);
+            transform: rotate(360deg);
         }
 
         .tutorial-title.active::after {
@@ -225,19 +248,21 @@
             transform: rotate(180deg);
         }
 
-        /* تعديل خاص لضمان فتح المحتوى بالكامل بدون قص */
         .tutorial-content {
             padding: 0 20px;
             background-color: var(--white);
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease-out, padding 0.4s ease;
+            opacity: 0;
+            transition: max-height 0.4s ease-out, padding 0.4s ease, opacity 0.3s ease;
         }
 
         .tutorial-content.show {
-            max-height: 1000px; /* رقم كبير يضمن ظهور المحتوى بالكامل مهما كان طوله */
+            max-height: 1000px;
+            opacity: 1;
             padding-top: 20px;
             padding-bottom: 20px;
+            border-top: 1px solid #f1f5f9;
         }
 
         .tutorial-content p {
@@ -405,7 +430,7 @@
             
             <!-- 1. البرمجة -->
             <div class="tutorial-item">
-                <button class="tutorial-title" onclick="openAndScroll('item1')">
+                <button class="tutorial-title" onclick="toggleTutorial(this, 'item1')">
                     <span><i class="fas fa-code icon-left"></i> 1. البرمجة وتطوير البرمجيات</span>
                 </button>
                 <div class="tutorial-content" id="item1">
@@ -415,7 +440,7 @@
 
             <!-- 2. الذكاء الاصطناعي -->
             <div class="tutorial-item">
-                <button class="tutorial-title" onclick="openAndScroll('item2')">
+                <button class="tutorial-title" onclick="toggleTutorial(this, 'item2')">
                     <span><i class="fas fa-brain icon-left"></i> 2. الذكاء الاصطناعي (AI) والتعلم الآلي</span>
                 </button>
                 <div class="tutorial-content" id="item2">
@@ -425,7 +450,7 @@
 
             <!-- 3. الأمن السيبراني -->
             <div class="tutorial-item">
-                <button class="tutorial-title" onclick="openAndScroll('item3')">
+                <button class="tutorial-title" onclick="toggleTutorial(this, 'item3')">
                     <span><i class="fas fa-shield-alt icon-left"></i> 3. الأمن السيبراني وحماية البيانات</span>
                 </button>
                 <div class="tutorial-content" id="item3">
@@ -435,7 +460,7 @@
 
             <!-- 4. تقانة المعلومات -->
             <div class="tutorial-item">
-                <button class="tutorial-title" onclick="openAndScroll('item4')">
+                <button class="tutorial-title" onclick="toggleTutorial(this, 'item4')">
                     <span><i class="fas fa-laptop-code icon-left"></i> 4. تقانة المعلومات (IT)</span>
                 </button>
                 <div class="tutorial-content" id="item4">
@@ -445,7 +470,7 @@
 
             <!-- 5. علوم الحاسوب -->
             <div class="tutorial-item">
-                <button class="tutorial-title" onclick="openAndScroll('item5')">
+                <button class="tutorial-title" onclick="toggleTutorial(this, 'item5')">
                     <span><i class="fas fa-microchip icon-left"></i> 5. علوم الحاسوب (Computer Science)</span>
                 </button>
                 <div class="tutorial-content" id="item5">
@@ -455,7 +480,7 @@
 
             <!-- 6. الشبكات وأنظمة الاتصالات -->
             <div class="tutorial-item">
-                <button class="tutorial-title" onclick="openAndScroll('item6')">
+                <button class="tutorial-title" onclick="toggleTutorial(this, 'item6')">
                     <span><i class="fas fa-network-wired icon-left"></i> 6. شبكات الحاسوب والاتصالات</span>
                 </button>
                 <div class="tutorial-content" id="item6">
@@ -465,7 +490,7 @@
 
             <!-- 7. قواعد البيانات -->
             <div class="tutorial-item">
-                <button class="tutorial-title" onclick="openAndScroll('item7')">
+                <button class="tutorial-title" onclick="toggleTutorial(this, 'item7')">
                     <span><i class="fas fa-database icon-left"></i> 7. قواعد البيانات (Databases)</span>
                 </button>
                 <div class="tutorial-content" id="item7">
@@ -475,7 +500,7 @@
 
             <!-- 8. صيانة الحاسوب والعتاد -->
             <div class="tutorial-item">
-                <button class="tutorial-title" onclick="openAndScroll('item8')">
+                <button class="tutorial-title" onclick="toggleTutorial(this, 'item8')">
                     <span><i class="fas fa-tools icon-left"></i> 8. صيانة الحاسوب والعتاد (Hardware)</span>
                 </button>
                 <div class="tutorial-content" id="item8">
@@ -485,7 +510,7 @@
 
             <!-- 9. تطوير الويب وتطبيقات الجوال -->
             <div class="tutorial-item">
-                <button class="tutorial-title" onclick="openAndScroll('item9')">
+                <button class="tutorial-title" onclick="toggleTutorial(this, 'item9')">
                     <span><i class="fas fa-mobile-alt icon-left"></i> 9. تطوير الويب وتطبيقات الجوال</span>
                 </button>
                 <div class="tutorial-content" id="item9">
@@ -495,7 +520,7 @@
 
             <!-- 10. الحوسبة السحابية -->
             <div class="tutorial-item">
-                <button class="tutorial-title" onclick="openAndScroll('item10')">
+                <button class="tutorial-title" onclick="toggleTutorial(this, 'item10')">
                     <span><i class="fas fa-cloud icon-left"></i> 10. الحوسبة السحابية (Cloud Computing)</span>
                 </button>
                 <div class="tutorial-content" id="item10">
@@ -538,15 +563,32 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- السكريبت المحدث لضمان فتح المحتوى بالكامل -->
+    <!-- السكريبت المطور بالتأثيرات الجذابة والتفاعلية -->
     <script>
-        function openAndScroll(id) {
+        function toggleTutorial(button, id) {
+            // إضافة تأثير الموجة (Ripple Effect) الجذاب عند الضغط
+            const existingRipple = button.getElementsByClassName("ripple")[0];
+            if (existingRipple) {
+                existingRipple.remove();
+            }
+
+            const circle = document.createElement("span");
+            const diameter = Math.max(button.clientWidth, button.clientHeight);
+            const radius = diameter / 2;
+
+            // حساب مكان النقر بدقة لتوليد الموجة منه
+            const rect = button.getBoundingClientRect();
+            // لتبسيط الأمر سنضعها بمنتصف الزر أو نقطة اللمس
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${button.clientWidth / 2 - radius}px`;
+            circle.style.top = `${button.clientHeight / 2 - radius}px`;
+            circle.classList.add("ripple");
+            button.appendChild(circle);
+
             const panel = document.getElementById(id);
-            const button = panel.previousElementSibling;
-            
             const isOpen = button.classList.contains("active");
 
-            // إغلاق جميع الأقسام المفتوحة أولاً
+            // إغلاق جميع الأقسام الأخرى
             const allButtons = document.getElementsByClassName("tutorial-title");
             const allPanels = document.getElementsByClassName("tutorial-content");
             
@@ -555,12 +597,11 @@
                 allPanels[i].classList.remove("show");
             }
 
-            // إذا لم يكن مفتوحاً، قم بفتحه والانتقال إليه بسلاسة
+            // إذا لم يكن مفتوحاً، افتحه وقم بالانتقال السلس إليه
             if (!isOpen) {
                 button.classList.add("active");
                 panel.classList.add("show");
 
-                // الانتقال السلس إلى مكان الشرح
                 setTimeout(() => {
                     panel.scrollIntoView({
                         behavior: 'smooth',
