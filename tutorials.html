@@ -225,12 +225,19 @@
             transform: rotate(180deg);
         }
 
+        /* تعديل خاص لضمان فتح المحتوى بالكامل بدون قص */
         .tutorial-content {
             padding: 0 20px;
             background-color: var(--white);
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.35s ease-out, padding 0.35s ease;
+            transition: max-height 0.4s ease-out, padding 0.4s ease;
+        }
+
+        .tutorial-content.show {
+            max-height: 1000px; /* رقم كبير يضمن ظهور المحتوى بالكامل مهما كان طوله */
+            padding-top: 20px;
+            padding-bottom: 20px;
         }
 
         .tutorial-content p {
@@ -531,7 +538,7 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- السكريبت (Smooth Scroll & Accordion) -->
+    <!-- السكريبت المحدث لضمان فتح المحتوى بالكامل -->
     <script>
         function openAndScroll(id) {
             const panel = document.getElementById(id);
@@ -545,17 +552,13 @@
             
             for (let i = 0; i < allButtons.length; i++) {
                 allButtons[i].classList.remove("active");
-                allPanels[i].style.maxHeight = null;
-                allPanels[i].style.paddingTop = "0";
-                allPanels[i].style.paddingBottom = "0";
+                allPanels[i].classList.remove("show");
             }
 
             // إذا لم يكن مفتوحاً، قم بفتحه والانتقال إليه بسلاسة
             if (!isOpen) {
                 button.classList.add("active");
-                panel.style.maxHeight = panel.scrollHeight + "px";
-                panel.style.paddingTop = "20px";
-                panel.style.paddingBottom = "20px";
+                panel.classList.add("show");
 
                 // الانتقال السلس إلى مكان الشرح
                 setTimeout(() => {
@@ -563,7 +566,7 @@
                         behavior: 'smooth',
                         block: 'center'
                     });
-                }, 100);
+                }, 150);
             }
         }
 
