@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الشروحات - التقني الدومة | أهمية البرمجة</title>
+    <title>شروحات تخصصات الحاسوب - التقني الدومة</title>
 
     <!-- ========================================== -->
     <!-- أكواد التحقق (Head) -->
@@ -40,7 +40,6 @@
             --text-muted: #475569;
             --white: #ffffff;
             --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 20px 40px -5px rgba(0, 0, 0, 0.15);
             --transition: all 0.3s ease;
         }
 
@@ -71,7 +70,7 @@
         }
 
         /* ===============================
-           الهيدر الثابت (مطابق للصورة)
+           الهيدر الثابت
            =============================== */
         header {
             background: #0b2b26;
@@ -126,7 +125,7 @@
         }
 
         /* ===============================
-           المحتوى الرئيسي (المقال)
+           المحتوى الرئيسي
            =============================== */
         main { 
             flex: 1; 
@@ -161,65 +160,123 @@
             border-radius: 2px; 
         }
 
-        /* بطاقة الشروحات */
-        .tutorial-container {
+        /* حاوية الأكورديون الشروحات */
+        .tutorials-container {
             background: var(--white);
             border-radius: 24px;
-            padding: 3rem;
+            padding: 2rem;
             box-shadow: var(--shadow-md);
             border: 1px solid rgba(0,0,0,0.03);
         }
 
-        .tutorial-section {
-            margin-bottom: 2.5rem;
+        .tutorial-item {
+            margin-bottom: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
         }
 
-        .tutorial-section:last-child {
-            margin-bottom: 0;
+        .tutorial-item:hover {
+            border-color: var(--accent-color);
         }
 
-        .tutorial-section h3 {
-            font-size: 1.5rem;
+        /* زر العنوان (الرابط القابل للضغط) */
+        .tutorial-title {
+            background-color: #f8fafc;
             color: var(--primary-color);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            cursor: pointer;
+            padding: 16px 20px;
+            width: 100%;
+            border: none;
+            text-align: right;
+            outline: none;
+            font-size: 1.15rem;
             font-weight: 800;
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
         }
 
-        .tutorial-section h3 i {
+        .tutorial-title i.icon-left {
             color: var(--accent-color);
-            background: #fef3c7;
-            width: 45px;
-            height: 45px;
+            background: rgba(11, 43, 38, 0.08);
+            width: 35px;
+            height: 35px;
             display: inline-flex;
             justify-content: center;
             align-items: center;
             border-radius: 50%;
-            font-size: 1.2rem;
+            font-size: 0.9rem;
+            margin-left: 12px;
         }
 
-        .tutorial-section p {
+        .tutorial-title span {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* رمز التوسيع (+ أو -) */
+        .tutorial-title::after {
+            content: '\f067'; /* أيقونة زائد FontAwesome */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
+            transition: var(--transition);
         }
 
-        .tutorial-section ul {
+        .tutorial-title.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .tutorial-title.active i.icon-left {
+            background: rgba(249, 199, 79, 0.2);
+            color: var(--accent-color);
+        }
+
+        .tutorial-title.active::after {
+            content: '\f068'; /* أيقونة ناقص */
+            color: var(--accent-color);
+            transform: rotate(180deg);
+        }
+
+        /* محتوى الشرح (مخفي افتراضياً) */
+        .tutorial-content {
+            padding: 0 20px;
+            background-color: var(--white);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease-out, padding 0.35s ease;
+            border-top: 1px solid transparent;
+        }
+
+        .tutorial-content p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            padding: 20px 0;
+            line-height: 1.8;
+        }
+
+        .tutorial-content ul {
             list-style: none;
             padding-right: 1rem;
+            padding-bottom: 20px;
         }
 
-        .tutorial-section ul li {
+        .tutorial-content ul li {
             position: relative;
             padding-right: 1.5rem;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.6rem;
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
 
-        .tutorial-section ul li::before {
+        .tutorial-content ul li::before {
             content: '\f00c';
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
@@ -230,18 +287,10 @@
             font-size: 0.9rem;
         }
 
-        .highlight {
-            color: var(--primary-color);
-            font-weight: 700;
-            background: rgba(249, 199, 79, 0.2);
-            padding: 0 5px;
-            border-radius: 4px;
-        }
-
-        /* تنسيق زر الدايركت لينك */
+        /* زر الدايركت لينك */
         .direct-link-wrapper {
             text-align: center;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
             padding-top: 2rem;
             border-top: 1px dashed #cbd5e1;
         }
@@ -269,7 +318,7 @@
             box-shadow: 0 12px 25px rgba(243, 156, 18, 0.6);
         }
 
-        /* خاتمة المقال */
+        /* الخاتمة */
         .conclusion-banner {
             background: var(--primary-color);
             color: var(--white);
@@ -381,18 +430,12 @@
             .page-title { 
                 font-size: 1.8rem; 
             }
-            .tutorial-container {
-                padding: 1.5rem;
+            .tutorials-container {
+                padding: 1rem;
             }
-            .tutorial-section h3 {
-                font-size: 1.3rem;
-            }
-            .tutorial-section p, .tutorial-section ul li {
+            .tutorial-title {
                 font-size: 1rem;
-            }
-            .direct-link-btn {
-                font-size: 1rem;
-                padding: 12px 20px;
+                padding: 14px;
             }
         }
     </style>
@@ -411,56 +454,114 @@
                 <li><a href="videos.html">الفيديوهات</a></li>
                 <li><a href="contact.html">تواصل</a></li>
                 <li><a href="about.html">من نحنا</a></li>
-
             </ul>
         </nav>
     </header>
 
     <!-- المحتوى الرئيسي -->
     <main>
-        <h1 class="page-title">💻 أهمية البرمجة واستخداماتها</h1>
+        <h1 class="page-title">💻 شروحات تخصصات الحاسوب التقنية</h1>
 
-        <div class="tutorial-container">
+        <div class="tutorials-container">
             
-            <!-- القسم الأول -->
-            <div class="tutorial-section">
-                <h3><i class="fas fa-code"></i> ما هي البرمجة؟</h3>
-                <p>
-                    البرمجة هي لغة العصر الحديث. إنها عملية كتابة تعليمات (أكواد) يفهمها الحاسوب ليقوم بمهام محددة. 
-                    من خلال البرمجة، نستطيع أن نأمر الأجهزة والمواقع والتطبيقات بأن تعمل بالطريقة التي نريدها بدقة وسرعة فائقة.
-                </p>
+            <!-- 1. البرمجة -->
+            <div class="tutorial-item">
+                <button class="tutorial-title">
+                    <span><i class="fas fa-code icon-left"></i> 1. البرمجة وتطوير البرمجيات</span>
+                </button>
+                <div class="tutorial-content">
+                    <p>البرمجة هي لغة العصر الحديث وعملية كتابة الأوامر والتعليمات التي يفهمها الحاسوب لتنفيذ مهام محددة. من خلالها يتم بناء المواقع والتطبيقات وحل المشكلات المعقدة بكفاءة عالية.</p>
+                </div>
             </div>
 
-            <!-- القسم الثاني -->
-            <div class="tutorial-section">
-                <h3><i class="fas fa-rocket"></i> لماذا تعلّم البرمجة مهم لكل سوداني؟</h3>
-                <p>
-                    في عصر الرقمنة، <span class="highlight">البرمجة تفتح لك أبواب الفرص</span>: وظائف مرتفعة الدخل، مشاريع حرة (فريلانس)، 
-                    وقدرة على إنشاء تطبيقات ومواقع تساعد مجتمعك. <strong>التقني الدومة</strong> يؤمن بأن تعلم البرمجة هو 
-                    أساس التطور التقني في السودان.
-                </p>
+            <!-- 2. الذكاء الاصطناعي -->
+            <div class="tutorial-item">
+                <button class="tutorial-title">
+                    <span><i class="fas fa-brain icon-left"></i> 2. الذكاء الاصطناعي (AI) والتعلم الآلي</span>
+                </button>
+                <div class="tutorial-content">
+                    <p>تخصص مستقبل التقنية الذي يركز على محاكاة الأنظمة الحاسوبية للذكاء البشري. يشمل تعلم الآلة (Machine Learning)، معالجة اللغات الطبيعية، وتحليل البيانات الضخمة لاتخاذ قرارات ذكية.</p>
+                </div>
             </div>
 
-            <!-- القسم الثالث -->
-            <div class="tutorial-section">
-                <h3><i class="fas fa-mobile-alt"></i> استخدامات البرمجة في حياتنا اليومية</h3>
-                <ul>
-                    <li><strong>تطبيقات الجوال:</strong> كل تطبيق تفتحه في هاتفك (واتساب، فيسبوك، الخ) صُنع بواسطة البرمجة.</li>
-                    <li><strong>مواقع الويب:</strong> المتاجر الإلكترونية، منصات التعليم، وحتى موقعنا هذا يعتمد على البرمجة.</li>
-                    <li><strong>الذكاء الاصطناعي:</strong> المساعدات الصوتية (مثل سيري ومساعد جوجل)، والتعرف على الوجه، والسيارات ذاتية القيادة.</li>
-                    <li><strong>الأمن السيبراني:</strong> حماية البيانات والمعلومات من الاختراقات.</li>
-                    <li><strong>الألعاب:</strong> كل لعبة إلكترونية ممتعة هي نتاج برمجيين مبدعين.</li>
-                </ul>
+            <!-- 3. الأمن السيبراني -->
+            <div class="tutorial-item">
+                <button class="tutorial-title">
+                    <span><i class="fas fa-shield-alt icon-left"></i> 3. الأمن السيبراني وحماية البيانات</span>
+                </button>
+                <div class="tutorial-content">
+                    <p>الدفاع عن الأنظمة، الشبكات، والبرمجيات ضد الهجمات الرقمية والاختراقات الخبيثة. يهدف إلى تأمين المعلومات الحساسة وضمان سرية وسلامة البيانات الشخصية والمؤسسية.</p>
+                </div>
             </div>
 
-            <!-- القسم الرابع -->
-            <div class="tutorial-section">
-                <h3><i class="fas fa-road"></i> كيف تبدأ طريقك في البرمجة؟</h3>
-                <p>
-                    ابدأ بإحدى اللغات السهلة مثل <strong>Python</strong> أو <strong>JavaScript</strong>. استخدم المصادر المجانية على الإنترنت، 
-                    وتدرب يوميًا. <strong>التقني الدومة</strong> ينصحك بالانضمام إلى مجتمعات المبرمجين السودانية للحصول على الدعم وتبادل الخبرات. 
-                    تذكر: المبرمج الناجح لا يتوقف عن التعلم أبدًا.
-                </p>
+            <!-- 4. تقانة المعلومات -->
+            <div class="tutorial-item">
+                <button class="tutorial-title">
+                    <span><i class="fas fa-laptop-code icon-left"></i> 4. تقانة المعلومات (IT)</span>
+                </button>
+                <div class="tutorial-content">
+                    <p>يركز على استخدام وتطبيق الحواسيب، شبكات الاتصالات، وقواعد البيانات لإدارة وتخزين واسترجاع ونقل المعلومات بكفاءة تخدم الشركات والمؤسسات في بيئة العمل اليومية.</p>
+                </div>
+            </div>
+
+            <!-- 5. علوم الحاسوب -->
+            <div class="tutorial-item">
+                <button class="tutorial-title">
+                    <span><i class="fas fa-microchip icon-left"></i> 5. علوم الحاسوب (Computer Science)</span>
+                </button>
+                <div class="tutorial-content">
+                    <p>الدراسة الأكاديمية والنظرية للأسس الرياضية والحسابية، الخوارزميات، هياكل البيانات، وكيفية تصميم أنظمة التشغيل والبرمجيات وتطوير خوارزميات جديدة أكثر سرعة وفعالية.</p>
+                </div>
+            </div>
+
+            <!-- 6. الشبكات وأنظمة الاتصالات -->
+            <div class="tutorial-item">
+                <button class="tutorial-title">
+                    <span><i class="fas fa-network-wired icon-left"></i> 6. شبكات الحاسوب والاتصالات</span>
+                </button>
+                <div class="tutorial-content">
+                    <p>مجال ربط أجهزة الحاسوب ببعضها محلياً وعالمياً (مثل الإنترنت) لتبادل البيانات والموارد. يدرس بروتوكولات الاتصال، إعداد الموجهات (Routers)، وتأمين قنوات نقل البيانات.</p>
+                </div>
+            </div>
+
+            <!-- 7. قواعد البيانات وإدارة البيانات -->
+            <div class="tutorial-item">
+                <button class="tutorial-title">
+                    <span><i class="fas fa-database icon-left"></i> 7. قواعد البيانات (Databases)</span>
+                </button>
+                <div class="tutorial-content">
+                    <p>تصميم وتنظيم وتخزين البيانات الهائلة بطريقة منهجية وآمنة باستخدام نظم إدارة قواعد البيانات مثل MySQL وSQL Server، مما يسهل استرجاعها وتحليلها بسرعة عالية.</p>
+                </div>
+            </div>
+
+            <!-- 8. صيانة الحاسوب والعتاد -->
+            <div class="tutorial-item">
+                <button class="tutorial-title">
+                    <span><i class="fas fa-tools icon-left"></i> 8. صيانة الحاسوب والعتاد (Hardware)</span>
+                </button>
+                <div class="tutorial-content">
+                    <p>التعرف على المكونات المادية للحاسوب (المعالج، اللوحة الأم، الذاكرة العشوائية)، وفحصها، إصلاح الأعطال المادية، وترقية القطع لضمان أداء مستقر وسريع للجهاز.</p>
+                </div>
+            </div>
+
+            <!-- 9. تطوير الويب وتطبيقات الجوال -->
+            <div class="tutorial-item">
+                <button class="tutorial-title">
+                    <span><i class="fas fa-mobile-alt icon-left"></i> 9. تطوير الويب وتطبيقات الجوال</span>
+                </button>
+                <div class="tutorial-content">
+                    <p>بناء واجهات المستخدم وتصميم المواقع الإلكترونية التفاعلية وتطبيقات الهواتف الذكية (لنظامي أندرويد وآيفون) باستخدام تقنيات حديثة مثل Flutter وHTML/CSS وJavaScript.</p>
+                </div>
+            </div>
+
+            <!-- 10. الحوسبة السحابية -->
+            <div class="tutorial-item">
+                <button class="tutorial-title">
+                    <span><i class="fas fa-cloud icon-left"></i> 10. الحوسبة السحابية (Cloud Computing)</span>
+                </button>
+                <div class="tutorial-content">
+                    <p>تقديم خدمات الحوسبة عبر الإنترنت (مثل الخوادم، التخزين، وقواعد البيانات) عبر منصات مثل AWS وGoogle Cloud، مما يغني عن الحاجة للبنية التحتية المحلية المكلفة.</p>
+                </div>
             </div>
 
             <!-- 🟢 زر الدايركت لينك (Direct Link) -->
@@ -477,7 +578,7 @@
 
         <!-- الخاتمة -->
         <div class="conclusion-banner">
-            <i class="fas fa-star"></i> البرمجة مستقبل السودان، والتقني الدومة هنا ليساعدك على بناء هذا المستقبل <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i> التكنولوجيا تمضي سريعاً، والتقني الدومة هنا ليضعك في قلب الحدث التقني <i class="fas fa-star"></i>
         </div>
 
     </main>
@@ -487,51 +588,4 @@
         <div class="footer-content">
             <p>جميع الحقوق محفوظة © <strong>التقني الدومة - آدم عصام</strong> 2026</p>
             <div class="social-links">
-                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://github.com/adamosam1997-afk" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="contact.html"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- زر العودة للأعلى -->
-    <button id="backToTop" aria-label="العودة للأعلى">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- السكريبت -->
-    <script>
-        const backToTopBtn = document.getElementById("backToTop");
-        
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add("show");
-            } else {
-                backToTopBtn.classList.remove("show");
-            }
-        });
-
-        backToTopBtn.addEventListener("click", () => {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        });
-    </script>
-
-    <!-- 🟢 كود HilltopAds Popunder الجديد (pop1) -->
-    <script>
-    (function(jqxxv){
-    var d = document,
-        s = d.createElement('script'),
-        l = d.currentScript || d.scripts[d.scripts.length - 1];
-    s.settings = jqxxv || {};
-    s.src = "\/\/vapid-size.com\/crDs9.6WbF2v5Gl\/S\/WBQO9wNAzOU\/0XNuTqcFw-O_SM0m3cNtToQj1DNtzHEAzA";
-    s.async = true;
-    s.referrerPolicy = 'no-referrer-when-downgrade';
-    l.parentNode.insertBefore(s, l);
-    })({})
-    </script>
-
-</body>
-</html>
+                <a hr
