@@ -8,30 +8,17 @@
     <!-- ========================================== -->
     <!-- أكواد التحقق (Head) -->
     <!-- ========================================== -->
-    
-    <!-- HilltopAds Website Verification -->
     <meta name="619448cdd0fc4fc8cecb7a09284a544e03b56e3b" content="619448cdd0fc4fc8cecb7a09284a544e03b56e3b" />
-
     <meta name="mitgo-verification" content="d431b217-a45b-47d9-9ea8-ef7ffd56137a" />
-
-    <!-- Google Site Verification -->
     <meta name="google-site-verification" content="UGyO6N6dV_8WdtwG_cNjXdhStvBVZbiryQsuh62SHiA">
 
-    <!-- ========================================== -->
     <!-- الخطوط والأيقونات -->
-    <!-- ========================================== -->
-    <!-- Google Fonts: Cairo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* ===============================
-           إعدادات عامة
-           =============================== */
         :root {
             --primary-color: #0b2b26;
             --accent-color: #f9c74f;
@@ -69,9 +56,7 @@
             color: inherit; 
         }
 
-        /* ===============================
-           الهيدر الثابت
-           =============================== */
+        /* الهيدر */
         header {
             background: #0b2b26;
             padding: 15px 10px;
@@ -124,9 +109,7 @@
             box-shadow: 0 4px 10px rgba(249, 199, 79, 0.3); 
         }
 
-        /* ===============================
-           المحتوى الرئيسي
-           =============================== */
+        /* المحتوى الرئيسي */
         main { 
             flex: 1; 
             max-width: 900px; 
@@ -160,7 +143,6 @@
             border-radius: 2px; 
         }
 
-        /* حاوية الأكورديون الشروحات */
         .tutorials-container {
             background: var(--white);
             border-radius: 24px;
@@ -181,7 +163,6 @@
             border-color: var(--accent-color);
         }
 
-        /* زر العنوان (الرابط القابل للضغط) */
         .tutorial-title {
             background-color: #f8fafc;
             color: var(--primary-color);
@@ -219,9 +200,8 @@
             gap: 10px;
         }
 
-        /* رمز التوسيع (+ أو -) */
         .tutorial-title::after {
-            content: '\f067'; /* أيقونة زائد FontAwesome */
+            content: '\f067';
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             font-size: 0.9rem;
@@ -240,51 +220,23 @@
         }
 
         .tutorial-title.active::after {
-            content: '\f068'; /* أيقونة ناقص */
+            content: '\f068';
             color: var(--accent-color);
             transform: rotate(180deg);
         }
 
-        /* محتوى الشرح (مخفي افتراضياً) */
         .tutorial-content {
             padding: 0 20px;
             background-color: var(--white);
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.35s ease-out, padding 0.35s ease;
-            border-top: 1px solid transparent;
         }
 
         .tutorial-content p {
             color: var(--text-muted);
             font-size: 1.05rem;
-            padding: 20px 0;
             line-height: 1.8;
-        }
-
-        .tutorial-content ul {
-            list-style: none;
-            padding-right: 1rem;
-            padding-bottom: 20px;
-        }
-
-        .tutorial-content ul li {
-            position: relative;
-            padding-right: 1.5rem;
-            margin-bottom: 0.6rem;
-            color: var(--text-muted);
-            font-size: 1.05rem;
-        }
-
-        .tutorial-content ul li::before {
-            content: '\f00c';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            right: 0;
-            top: 2px;
-            color: var(--accent-color);
-            font-size: 0.9rem;
         }
 
         /* زر الدايركت لينك */
@@ -318,7 +270,6 @@
             box-shadow: 0 12px 25px rgba(243, 156, 18, 0.6);
         }
 
-        /* الخاتمة */
         .conclusion-banner {
             background: var(--primary-color);
             color: var(--white);
@@ -337,9 +288,7 @@
             margin-left: 8px;
         }
 
-        /* ===============================
-           الفوتر وزر العودة للأعلى
-           =============================== */
+        /* الفوتر */
         footer { 
             background: #081f1b; 
             color: #a0aec0; 
@@ -413,30 +362,13 @@
             transform: translateY(-5px); 
         }
 
-        /* ===============================
-           التجاوب مع الهواتف
-           =============================== */
         @media (max-width: 600px) {
-            nav ul {
-                gap: 5px;
-            }
-            nav ul li a {
-                padding: 6px 12px;
-                font-size: 0.9rem;
-            }
-            main {
-                padding: 2rem 1rem;
-            }
-            .page-title { 
-                font-size: 1.8rem; 
-            }
-            .tutorials-container {
-                padding: 1rem;
-            }
-            .tutorial-title {
-                font-size: 1rem;
-                padding: 14px;
-            }
+            nav ul { gap: 5px; }
+            nav ul li a { padding: 6px 12px; font-size: 0.9rem; }
+            main { padding: 2rem 1rem; }
+            .page-title { font-size: 1.8rem; }
+            .tutorials-container { padding: 1rem; }
+            .tutorial-title { font-size: 1rem; padding: 14px; }
         }
     </style>
 </head>
@@ -466,105 +398,105 @@
             
             <!-- 1. البرمجة -->
             <div class="tutorial-item">
-                <button class="tutorial-title">
+                <button class="tutorial-title" onclick="openAndScroll('item1')">
                     <span><i class="fas fa-code icon-left"></i> 1. البرمجة وتطوير البرمجيات</span>
                 </button>
-                <div class="tutorial-content">
+                <div class="tutorial-content" id="item1">
                     <p>البرمجة هي لغة العصر الحديث وعملية كتابة الأوامر والتعليمات التي يفهمها الحاسوب لتنفيذ مهام محددة. من خلالها يتم بناء المواقع والتطبيقات وحل المشكلات المعقدة بكفاءة عالية.</p>
                 </div>
             </div>
 
             <!-- 2. الذكاء الاصطناعي -->
             <div class="tutorial-item">
-                <button class="tutorial-title">
+                <button class="tutorial-title" onclick="openAndScroll('item2')">
                     <span><i class="fas fa-brain icon-left"></i> 2. الذكاء الاصطناعي (AI) والتعلم الآلي</span>
                 </button>
-                <div class="tutorial-content">
+                <div class="tutorial-content" id="item2">
                     <p>تخصص مستقبل التقنية الذي يركز على محاكاة الأنظمة الحاسوبية للذكاء البشري. يشمل تعلم الآلة (Machine Learning)، معالجة اللغات الطبيعية، وتحليل البيانات الضخمة لاتخاذ قرارات ذكية.</p>
                 </div>
             </div>
 
             <!-- 3. الأمن السيبراني -->
             <div class="tutorial-item">
-                <button class="tutorial-title">
+                <button class="tutorial-title" onclick="openAndScroll('item3')">
                     <span><i class="fas fa-shield-alt icon-left"></i> 3. الأمن السيبراني وحماية البيانات</span>
                 </button>
-                <div class="tutorial-content">
+                <div class="tutorial-content" id="item3">
                     <p>الدفاع عن الأنظمة، الشبكات، والبرمجيات ضد الهجمات الرقمية والاختراقات الخبيثة. يهدف إلى تأمين المعلومات الحساسة وضمان سرية وسلامة البيانات الشخصية والمؤسسية.</p>
                 </div>
             </div>
 
             <!-- 4. تقانة المعلومات -->
             <div class="tutorial-item">
-                <button class="tutorial-title">
+                <button class="tutorial-title" onclick="openAndScroll('item4')">
                     <span><i class="fas fa-laptop-code icon-left"></i> 4. تقانة المعلومات (IT)</span>
                 </button>
-                <div class="tutorial-content">
+                <div class="tutorial-content" id="item4">
                     <p>يركز على استخدام وتطبيق الحواسيب، شبكات الاتصالات، وقواعد البيانات لإدارة وتخزين واسترجاع ونقل المعلومات بكفاءة تخدم الشركات والمؤسسات في بيئة العمل اليومية.</p>
                 </div>
             </div>
 
             <!-- 5. علوم الحاسوب -->
             <div class="tutorial-item">
-                <button class="tutorial-title">
+                <button class="tutorial-title" onclick="openAndScroll('item5')">
                     <span><i class="fas fa-microchip icon-left"></i> 5. علوم الحاسوب (Computer Science)</span>
                 </button>
-                <div class="tutorial-content">
+                <div class="tutorial-content" id="item5">
                     <p>الدراسة الأكاديمية والنظرية للأسس الرياضية والحسابية، الخوارزميات، هياكل البيانات، وكيفية تصميم أنظمة التشغيل والبرمجيات وتطوير خوارزميات جديدة أكثر سرعة وفعالية.</p>
                 </div>
             </div>
 
             <!-- 6. الشبكات وأنظمة الاتصالات -->
             <div class="tutorial-item">
-                <button class="tutorial-title">
+                <button class="tutorial-title" onclick="openAndScroll('item6')">
                     <span><i class="fas fa-network-wired icon-left"></i> 6. شبكات الحاسوب والاتصالات</span>
                 </button>
-                <div class="tutorial-content">
+                <div class="tutorial-content" id="item6">
                     <p>مجال ربط أجهزة الحاسوب ببعضها محلياً وعالمياً (مثل الإنترنت) لتبادل البيانات والموارد. يدرس بروتوكولات الاتصال، إعداد الموجهات (Routers)، وتأمين قنوات نقل البيانات.</p>
                 </div>
             </div>
 
-            <!-- 7. قواعد البيانات وإدارة البيانات -->
+            <!-- 7. قواعد البيانات -->
             <div class="tutorial-item">
-                <button class="tutorial-title">
+                <button class="tutorial-title" onclick="openAndScroll('item7')">
                     <span><i class="fas fa-database icon-left"></i> 7. قواعد البيانات (Databases)</span>
                 </button>
-                <div class="tutorial-content">
+                <div class="tutorial-content" id="item7">
                     <p>تصميم وتنظيم وتخزين البيانات الهائلة بطريقة منهجية وآمنة باستخدام نظم إدارة قواعد البيانات مثل MySQL وSQL Server، مما يسهل استرجاعها وتحليلها بسرعة عالية.</p>
                 </div>
             </div>
 
             <!-- 8. صيانة الحاسوب والعتاد -->
             <div class="tutorial-item">
-                <button class="tutorial-title">
+                <button class="tutorial-title" onclick="openAndScroll('item8')">
                     <span><i class="fas fa-tools icon-left"></i> 8. صيانة الحاسوب والعتاد (Hardware)</span>
                 </button>
-                <div class="tutorial-content">
+                <div class="tutorial-content" id="item8">
                     <p>التعرف على المكونات المادية للحاسوب (المعالج، اللوحة الأم، الذاكرة العشوائية)، وفحصها، إصلاح الأعطال المادية، وترقية القطع لضمان أداء مستقر وسريع للجهاز.</p>
                 </div>
             </div>
 
             <!-- 9. تطوير الويب وتطبيقات الجوال -->
             <div class="tutorial-item">
-                <button class="tutorial-title">
+                <button class="tutorial-title" onclick="openAndScroll('item9')">
                     <span><i class="fas fa-mobile-alt icon-left"></i> 9. تطوير الويب وتطبيقات الجوال</span>
                 </button>
-                <div class="tutorial-content">
+                <div class="tutorial-content" id="item9">
                     <p>بناء واجهات المستخدم وتصميم المواقع الإلكترونية التفاعلية وتطبيقات الهواتف الذكية (لنظامي أندرويد وآيفون) باستخدام تقنيات حديثة مثل Flutter وHTML/CSS وJavaScript.</p>
                 </div>
             </div>
 
             <!-- 10. الحوسبة السحابية -->
             <div class="tutorial-item">
-                <button class="tutorial-title">
+                <button class="tutorial-title" onclick="openAndScroll('item10')">
                     <span><i class="fas fa-cloud icon-left"></i> 10. الحوسبة السحابية (Cloud Computing)</span>
                 </button>
-                <div class="tutorial-content">
+                <div class="tutorial-content" id="item10">
                     <p>تقديم خدمات الحوسبة عبر الإنترنت (مثل الخوادم، التخزين، وقواعد البيانات) عبر منصات مثل AWS وGoogle Cloud، مما يغني عن الحاجة للبنية التحتية المحلية المكلفة.</p>
                 </div>
             </div>
 
-            <!-- 🟢 زر الدايركت لينك (Direct Link) -->
+            <!-- زر الدايركت لينك -->
             <div class="direct-link-wrapper">
                 <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 15px;">هل تبحث عن المزيد من الفوائد؟</p>
                 <a href="https://plump-plastic.com/b/3CVl0xP.3/pgv/bFmtV/JYZdDG0X3qNmThQ/1nNEzyA/5cLnTPcL1/N/DOUO3pM-T/MN" 
@@ -576,7 +508,6 @@
 
         </div>
 
-        <!-- الخاتمة -->
         <div class="conclusion-banner">
             <i class="fas fa-star"></i> التكنولوجيا تمضي سريعاً، والتقني الدومة هنا ليضعك في قلب الحدث التقني <i class="fas fa-star"></i>
         </div>
@@ -588,4 +519,86 @@
         <div class="footer-content">
             <p>جميع الحقوق محفوظة © <strong>التقني الدومة - آدم عصام</strong> 2026</p>
             <div class="social-links">
-                <a hr
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://github.com/adamosam1997-afk" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="contact.html"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- زر العودة للأعلى -->
+    <button id="backToTop" aria-label="العودة للأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- السكريبت (Smooth Scroll & Accordion) -->
+    <script>
+        function openAndScroll(id) {
+            const panel = document.getElementById(id);
+            const button = panel.previousElementSibling;
+            
+            const isOpen = button.classList.contains("active");
+
+            // إغلاق جميع الأقسام المفتوحة أولاً
+            const allButtons = document.getElementsByClassName("tutorial-title");
+            const allPanels = document.getElementsByClassName("tutorial-content");
+            
+            for (let i = 0; i < allButtons.length; i++) {
+                allButtons[i].classList.remove("active");
+                allPanels[i].style.maxHeight = null;
+                allPanels[i].style.paddingTop = "0";
+                allPanels[i].style.paddingBottom = "0";
+            }
+
+            // إذا لم يكن مفتوحاً، قم بفتحه والانتقال إليه بسلاسة
+            if (!isOpen) {
+                button.classList.add("active");
+                panel.style.maxHeight = panel.scrollHeight + "px";
+                panel.style.paddingTop = "20px";
+                panel.style.paddingBottom = "20px";
+
+                // الانتقال السلس إلى مكان الشرح
+                setTimeout(() => {
+                    panel.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }, 100);
+            }
+        }
+
+        // زر العودة للأعلى
+        const backToTopBtn = document.getElementById("backToTop");
+        
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        });
+
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
+
+    <!-- كود HilltopAds Popunder -->
+    <script>
+    (function(jqxxv){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.currentScript || d.scripts[d.scripts.length - 1];
+    s.settings = jqxxv || {};
+    s.src = "\/\/vapid-size.com\/crDs9.6WbF2v5Gl\/S\/WBQO9wNAzOU\/0XNuTqcFw-O_SM0m3cNtToQj1DNtzHEAzA";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
+    </script>
+
+</body>
+</html>
