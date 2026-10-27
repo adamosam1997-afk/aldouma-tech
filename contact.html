@@ -431,8 +431,8 @@
         <div class="footer-content">
             <p>جميع الحقوق محفوظة © <strong>التقني الدومة - آدم عصام</strong> 2026</p>
             <div class="social-links">
-                <!-- ماسنجر فيسبوك (صفحة آدم عصام عليان) -->
-                <a href="https://m.me/YOUR_PAGE_USERNAME_OR_ID" target="_blank" title="مراسلة عبر ماسنجر"><i class="https://m.me/adm.sam.lyan"></i></a>
+                <!-- ماسنجر فيسبوك (صفحة آدم عصام عليان) - تم إصلاح الرابط -->
+                <a href="https://m.me/adm.sam.lyan" target="_blank" title="مراسلة عبر ماسنجر"><i class="fab fa-facebook-messenger"></i></a>
                 
                 <!-- تليجرام المطور Adam Osam بالرقم 0903230697 -->
                 <a href="https://t.me/+249903230697" target="_blank" title="تواصل عبر تليجرام"><i class="fab fa-telegram-plane"></i></a>
@@ -464,6 +464,7 @@
             window.scrollTo({ top: 0, behavior: "smooth" }); 
         });
 
+        // دالة إرسال الواتساب مع النص التلقائي الجاهز من الموقع
         function sendToWhatsApp() {
             let name = document.getElementById("name").value.trim();
             let message = document.getElementById("message").value.trim();
@@ -474,7 +475,10 @@
             }
             
             let phoneNumber = "249124975562";
-            let text = encodeURIComponent(`مرحباً، معك ${name}\n\n${message}`);
+            
+            // النص الجاهز الذي يوضح أن الرسالة قادمة من موقع "التقني الدومة"
+            let text = encodeURIComponent(`مرحباً باشمهندس آدام، تم إرسال هذه الرسالة عبر موقعك (التقني الدومة):\n\n👤 الاسم: ${name}\n💬 الرسالة:\n${message}`);
+            
             window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
         }
     </script>
