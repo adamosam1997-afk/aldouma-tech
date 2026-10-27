@@ -15,7 +15,7 @@
     <!-- الخطوط والأيقونات -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -26,8 +26,8 @@
             --text-dark: #1e2a3e;
             --text-muted: #475569;
             --white: #ffffff;
-            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * { 
@@ -152,21 +152,23 @@
         }
 
         .tutorial-item {
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             border: 1px solid #e2e8f0;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
             transition: var(--transition);
+            background: #ffffff;
         }
 
         .tutorial-item:hover {
             border-color: var(--accent-color);
-            box-shadow: 0 4px 12px rgba(11, 43, 38, 0.08);
+            box-shadow: 0 8px 20px rgba(11, 43, 38, 0.08);
+            transform: translateY(-2px);
         }
 
-        /* تصميم الزر مع تأثير الموجة */
+        /* تصميم الأزرار والعناوين بشكل جمالي فخم */
         .tutorial-title {
-            background-color: #f8fafc;
+            background: linear-gradient(to left, #ffffff, #f8fafc);
             color: var(--primary-color);
             cursor: pointer;
             padding: 16px 20px;
@@ -174,21 +176,18 @@
             border: none;
             text-align: right;
             outline: none;
-            font-size: 1.15rem;
-            font-weight: 800;
-            font-family: 'Cairo', sans-serif;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: relative;
-            overflow: hidden; /* ضروري لتأثير الموجة */
+            overflow: hidden;
             transition: var(--transition);
         }
 
-        /* تأثير الموجة عند النقر عبر الـ JS */
+        /* تأثير الموجة عند النقر */
         .ripple {
             position: absolute;
-            background: rgba(249, 199, 79, 0.4);
+            background: rgba(249, 199, 79, 0.35);
             border-radius: 50%;
             transform: scale(0);
             animation: ripple-animation 0.6s linear;
@@ -202,52 +201,90 @@
             }
         }
 
-        .tutorial-title i.icon-left {
-            color: var(--accent-color);
-            background: rgba(11, 43, 38, 0.08);
-            width: 35px;
-            height: 35px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            font-size: 0.9rem;
-            margin-left: 12px;
-            transition: var(--transition);
-        }
-
-        .tutorial-title span {
+        .title-content {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
 
-        .tutorial-title::after {
-            content: '\f067';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            font-size: 0.9rem;
-            color: var(--text-muted);
+        /* تصميم أيقونة التخصص بشكل مميز */
+        .icon-box {
+            background: rgba(11, 43, 38, 0.06);
+            color: var(--primary-color);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            font-size: 1.2rem;
             transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .tutorial-title:hover .icon-box {
+            background: var(--primary-color);
+            color: var(--accent-color);
+            transform: scale(1.08);
+        }
+
+        /* تنسيق نص العنوان والرقم */
+        .title-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .tutorial-num {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #64748b;
+            letter-spacing: 0.5px;
+        }
+
+        .tutorial-name {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /* علامة الفتح والإغلاق (+ / -) الفخمة */
+        .toggle-icon {
+            width: 32px;
+            height: 32px;
+            background: #f1f5f9;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            transition: var(--transition);
+            flex-shrink: 0;
         }
 
         .tutorial-title.active {
-            background-color: var(--primary-color);
+            background: var(--primary-color);
+        }
+
+        .tutorial-title.active .tutorial-name,
+        .tutorial-title.active .tutorial-num {
             color: var(--white);
         }
 
-        .tutorial-title.active i.icon-left {
+        .tutorial-title.active .icon-box {
             background: rgba(249, 199, 79, 0.2);
             color: var(--accent-color);
-            transform: rotate(360deg);
         }
 
-        .tutorial-title.active::after {
-            content: '\f068';
-            color: var(--accent-color);
+        .tutorial-title.active .toggle-icon {
+            background: var(--accent-color);
+            color: var(--primary-color);
             transform: rotate(180deg);
         }
 
+        /* صندوق محتوى الشرح */
         .tutorial-content {
             padding: 0 20px;
             background-color: var(--white);
@@ -258,17 +295,16 @@
         }
 
         .tutorial-content.show {
-            max-height: 1000px;
+            max-height: 1200px;
             opacity: 1;
-            padding-top: 20px;
-            padding-bottom: 20px;
+            padding: 25px 20px;
             border-top: 1px solid #f1f5f9;
         }
 
         .tutorial-content p {
             color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.8;
+            font-size: 1.08rem;
+            line-height: 1.9;
         }
 
         /* زر الدايركت لينك */
@@ -400,7 +436,9 @@
             main { padding: 2rem 1rem; }
             .page-title { font-size: 1.8rem; }
             .tutorials-container { padding: 1rem; }
-            .tutorial-title { font-size: 1rem; padding: 14px; }
+            .tutorial-title { padding: 12px 15px; }
+            .tutorial-name { font-size: 1.02rem; }
+            .icon-box { width: 38px; height: 38px; font-size: 1rem; }
         }
     </style>
 </head>
@@ -431,7 +469,14 @@
             <!-- 1. البرمجة -->
             <div class="tutorial-item">
                 <button class="tutorial-title" onclick="toggleTutorial(this, 'item1')">
-                    <span><i class="fas fa-code icon-left"></i> 1. البرمجة وتطوير البرمجيات</span>
+                    <div class="title-content">
+                        <div class="icon-box"><i class="fas fa-code"></i></div>
+                        <div class="title-text">
+                            <span class="tutorial-num">الدرس الأول</span>
+                            <span class="tutorial-name">البرمجة وتطوير البرمجيات</span>
+                        </div>
+                    </div>
+                    <div class="toggle-icon"><i class="fas fa-plus"></i></div>
                 </button>
                 <div class="tutorial-content" id="item1">
                     <p>البرمجة هي لغة العصر الحديث وعملية كتابة الأوامر والتعليمات التي يفهمها الحاسوب لتنفيذ مهام محددة. من خلالها يتم بناء المواقع والتطبيقات وحل المشكلات المعقدة بكفاءة عالية.</p>
@@ -441,7 +486,14 @@
             <!-- 2. الذكاء الاصطناعي -->
             <div class="tutorial-item">
                 <button class="tutorial-title" onclick="toggleTutorial(this, 'item2')">
-                    <span><i class="fas fa-brain icon-left"></i> 2. الذكاء الاصطناعي (AI) والتعلم الآلي</span>
+                    <div class="title-content">
+                        <div class="icon-box"><i class="fas fa-brain"></i></div>
+                        <div class="title-text">
+                            <span class="tutorial-num">الدرس الثاني</span>
+                            <span class="tutorial-name">الذكاء الاصطناعي (AI) والتعلم الآلي</span>
+                        </div>
+                    </div>
+                    <div class="toggle-icon"><i class="fas fa-plus"></i></div>
                 </button>
                 <div class="tutorial-content" id="item2">
                     <p>تخصص مستقبل التقنية الذي يركز على محاكاة الأنظمة الحاسوبية للذكاء البشري. يشمل تعلم الآلة (Machine Learning)، معالجة اللغات الطبيعية، وتحليل البيانات الضخمة لاتخاذ قرارات ذكية.</p>
@@ -451,7 +503,14 @@
             <!-- 3. الأمن السيبراني -->
             <div class="tutorial-item">
                 <button class="tutorial-title" onclick="toggleTutorial(this, 'item3')">
-                    <span><i class="fas fa-shield-alt icon-left"></i> 3. الأمن السيبراني وحماية البيانات</span>
+                    <div class="title-content">
+                        <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
+                        <div class="title-text">
+                            <span class="tutorial-num">الدرس الثالث</span>
+                            <span class="tutorial-name">الأمن السيبراني وحماية البيانات</span>
+                        </div>
+                    </div>
+                    <div class="toggle-icon"><i class="fas fa-plus"></i></div>
                 </button>
                 <div class="tutorial-content" id="item3">
                     <p>الدفاع عن الأنظمة، الشبكات، والبرمجيات ضد الهجمات الرقمية والاختراقات الخبيثة. يهدف إلى تأمين المعلومات الحساسة وضمان سرية وسلامة البيانات الشخصية والمؤسسية.</p>
@@ -461,7 +520,14 @@
             <!-- 4. تقانة المعلومات -->
             <div class="tutorial-item">
                 <button class="tutorial-title" onclick="toggleTutorial(this, 'item4')">
-                    <span><i class="fas fa-laptop-code icon-left"></i> 4. تقانة المعلومات (IT)</span>
+                    <div class="title-content">
+                        <div class="icon-box"><i class="fas fa-laptop-code"></i></div>
+                        <div class="title-text">
+                            <span class="tutorial-num">الدرس الرابع</span>
+                            <span class="tutorial-name">تقانة المعلومات (IT)</span>
+                        </div>
+                    </div>
+                    <div class="toggle-icon"><i class="fas fa-plus"></i></div>
                 </button>
                 <div class="tutorial-content" id="item4">
                     <p>يركز على استخدام وتطبيق الحواسيب، شبكات الاتصالات، وقواعد البيانات لإدارة وتخزين واسترجاع ونقل المعلومات بكفاءة تخدم الشركات والمؤسسات في بيئة العمل اليومية.</p>
@@ -471,7 +537,14 @@
             <!-- 5. علوم الحاسوب -->
             <div class="tutorial-item">
                 <button class="tutorial-title" onclick="toggleTutorial(this, 'item5')">
-                    <span><i class="fas fa-microchip icon-left"></i> 5. علوم الحاسوب (Computer Science)</span>
+                    <div class="title-content">
+                        <div class="icon-box"><i class="fas fa-microchip"></i></div>
+                        <div class="title-text">
+                            <span class="tutorial-num">الدرس الخامس</span>
+                            <span class="tutorial-name">علوم الحاسوب (Computer Science)</span>
+                        </div>
+                    </div>
+                    <div class="toggle-icon"><i class="fas fa-plus"></i></div>
                 </button>
                 <div class="tutorial-content" id="item5">
                     <p>الدراسة الأكاديمية والنظرية للأسس الرياضية والحسابية، الخوارزميات، هياكل البيانات، وكيفية تصميم أنظمة التشغيل والبرمجيات وتطوير خوارزميات جديدة أكثر سرعة وفعالية.</p>
@@ -481,7 +554,14 @@
             <!-- 6. الشبكات وأنظمة الاتصالات -->
             <div class="tutorial-item">
                 <button class="tutorial-title" onclick="toggleTutorial(this, 'item6')">
-                    <span><i class="fas fa-network-wired icon-left"></i> 6. شبكات الحاسوب والاتصالات</span>
+                    <div class="title-content">
+                        <div class="icon-box"><i class="fas fa-network-wired"></i></div>
+                        <div class="title-text">
+                            <span class="tutorial-num">الدرس السادس</span>
+                            <span class="tutorial-name">شبكات الحاسوب والاتصالات</span>
+                        </div>
+                    </div>
+                    <div class="toggle-icon"><i class="fas fa-plus"></i></div>
                 </button>
                 <div class="tutorial-content" id="item6">
                     <p>مجال ربط أجهزة الحاسوب ببعضها محلياً وعالمياً (مثل الإنترنت) لتبادل البيانات والموارد. يدرس بروتوكولات الاتصال، إعداد الموجهات (Routers)، وتأمين قنوات نقل البيانات.</p>
@@ -491,7 +571,14 @@
             <!-- 7. قواعد البيانات -->
             <div class="tutorial-item">
                 <button class="tutorial-title" onclick="toggleTutorial(this, 'item7')">
-                    <span><i class="fas fa-database icon-left"></i> 7. قواعد البيانات (Databases)</span>
+                    <div class="title-content">
+                        <div class="icon-box"><i class="fas fa-database"></i></div>
+                        <div class="title-text">
+                            <span class="tutorial-num">الدرس السابع</span>
+                            <span class="tutorial-name">قواعد البيانات (Databases)</span>
+                        </div>
+                    </div>
+                    <div class="toggle-icon"><i class="fas fa-plus"></i></div>
                 </button>
                 <div class="tutorial-content" id="item7">
                     <p>تصميم وتنظيم وتخزين البيانات الهائلة بطريقة منهجية وآمنة باستخدام نظم إدارة قواعد البيانات مثل MySQL وSQL Server، مما يسهل استرجاعها وتحليلها بسرعة عالية.</p>
@@ -501,7 +588,14 @@
             <!-- 8. صيانة الحاسوب والعتاد -->
             <div class="tutorial-item">
                 <button class="tutorial-title" onclick="toggleTutorial(this, 'item8')">
-                    <span><i class="fas fa-tools icon-left"></i> 8. صيانة الحاسوب والعتاد (Hardware)</span>
+                    <div class="title-content">
+                        <div class="icon-box"><i class="fas fa-tools"></i></div>
+                        <div class="title-text">
+                            <span class="tutorial-num">الدرس الثامن</span>
+                            <span class="tutorial-name">صيانة الحاسوب والعتاد (Hardware)</span>
+                        </div>
+                    </div>
+                    <div class="toggle-icon"><i class="fas fa-plus"></i></div>
                 </button>
                 <div class="tutorial-content" id="item8">
                     <p>التعرف على المكونات المادية للحاسوب (المعالج، اللوحة الأم، الذاكرة العشوائية)، وفحصها، إصلاح الأعطال المادية، وترقية القطع لضمان أداء مستقر وسريع للجهاز.</p>
@@ -511,7 +605,14 @@
             <!-- 9. تطوير الويب وتطبيقات الجوال -->
             <div class="tutorial-item">
                 <button class="tutorial-title" onclick="toggleTutorial(this, 'item9')">
-                    <span><i class="fas fa-mobile-alt icon-left"></i> 9. تطوير الويب وتطبيقات الجوال</span>
+                    <div class="title-content">
+                        <div class="icon-box"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="title-text">
+                            <span class="tutorial-num">الدرس التاسع</span>
+                            <span class="tutorial-name">تطوير الويب وتطبيقات الجوال</span>
+                        </div>
+                    </div>
+                    <div class="toggle-icon"><i class="fas fa-plus"></i></div>
                 </button>
                 <div class="tutorial-content" id="item9">
                     <p>بناء واجهات المستخدم وتصميم المواقع الإلكترونية التفاعلية وتطبيقات الهواتف الذكية (لنظامي أندرويد وآيفون) باستخدام تقنيات حديثة مثل Flutter وHTML/CSS وJavaScript.</p>
@@ -521,7 +622,14 @@
             <!-- 10. الحوسبة السحابية -->
             <div class="tutorial-item">
                 <button class="tutorial-title" onclick="toggleTutorial(this, 'item10')">
-                    <span><i class="fas fa-cloud icon-left"></i> 10. الحوسبة السحابية (Cloud Computing)</span>
+                    <div class="title-content">
+                        <div class="icon-box"><i class="fas fa-cloud"></i></div>
+                        <div class="title-text">
+                            <span class="tutorial-num">الدرس العاشر</span>
+                            <span class="tutorial-name">الحوسبة السحابية (Cloud Computing)</span>
+                        </div>
+                    </div>
+                    <div class="toggle-icon"><i class="fas fa-plus"></i></div>
                 </button>
                 <div class="tutorial-content" id="item10">
                     <p>تقديم خدمات الحوسبة عبر الإنترنت (مثل الخوادم، التخزين، وقواعد البيانات) عبر منصات مثل AWS وGoogle Cloud، مما يغني عن الحاجة للبنية التحتية المحلية المكلفة.</p>
@@ -563,10 +671,10 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- السكريبت المطور بالتأثيرات الجذابة والتفاعلية -->
+    <!-- السكريبت المطور -->
     <script>
         function toggleTutorial(button, id) {
-            // إضافة تأثير الموجة (Ripple Effect) الجذاب عند الضغط
+            // تأثير الموجة (Ripple Effect)
             const existingRipple = button.getElementsByClassName("ripple")[0];
             if (existingRipple) {
                 existingRipple.remove();
@@ -576,9 +684,6 @@
             const diameter = Math.max(button.clientWidth, button.clientHeight);
             const radius = diameter / 2;
 
-            // حساب مكان النقر بدقة لتوليد الموجة منه
-            const rect = button.getBoundingClientRect();
-            // لتبسيط الأمر سنضعها بمنتصف الزر أو نقطة اللمس
             circle.style.width = circle.style.height = `${diameter}px`;
             circle.style.left = `${button.clientWidth / 2 - radius}px`;
             circle.style.top = `${button.clientHeight / 2 - radius}px`;
@@ -591,16 +696,19 @@
             // إغلاق جميع الأقسام الأخرى
             const allButtons = document.getElementsByClassName("tutorial-title");
             const allPanels = document.getElementsByClassName("tutorial-content");
+            const allToggleIcons = document.querySelectorAll(".toggle-icon i");
             
             for (let i = 0; i < allButtons.length; i++) {
                 allButtons[i].classList.remove("active");
                 allPanels[i].classList.remove("show");
+                allToggleIcons[i].className = "fas fa-plus";
             }
 
-            // إذا لم يكن مفتوحاً، افتحه وقم بالانتقال السلس إليه
+            // إذا لم يكن مفتوحاً، افتحه وانتقل إليه بسلاسة
             if (!isOpen) {
                 button.classList.add("active");
                 panel.classList.add("show");
+                button.querySelector(".toggle-icon i").className = "fas fa-minus";
 
                 setTimeout(() => {
                     panel.scrollIntoView({
