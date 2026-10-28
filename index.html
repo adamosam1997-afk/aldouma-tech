@@ -276,7 +276,29 @@
 
     <!-- زر العودة للأعلى -->
     <button id="backToTop" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
+<!-- السكريبت -->
+    <script>
+        const backToTopBtn = document.getElementById("backToTop");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) { backToTopBtn.classList.add("show"); } 
+            else { backToTopBtn.classList.remove("show"); }
+        });
+        backToTopBtn.addEventListener("click", () => { window.scrollTo({ top: 0, behavior: "smooth" }); });
+    </script>
 
+    <!-- 🟢 كود HilltopAds Popunder الجديد (pop1) -->
+    <script>
+    (function(jqxxv){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.currentScript || d.scripts[d.scripts.length - 1];
+    s.settings = jqxxv || {};
+    s.src = "\/\/vapid-size.com\/crDs9.6WbF2v5Gl\/S\/WBQO9wNAzOU\/0XNuTqcFw-O_SM0m3cNtToQj1DNtzHEAzA";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
+    </script>
     
 <script>
 (function(eoe){
